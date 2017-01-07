@@ -1,0 +1,70 @@
+.site-alert {
+  background-color: $global-color-gray-4;
+  color: #fff;
+  .alert-container {
+    @include container;
+  }
+  .alert-row {
+    @include row;
+  }
+  .alert {
+    @include gridle_grid(12);
+    padding-top: $slug-height/3;
+    padding-bottom: $slug-height/3;
+    > .content {}
+  }
+  .icon {
+    @include remove;
+    vertical-align: middle;
+  }
+  .message {
+    display: inline;
+    font-size: 1em;
+    vertical-align: middle;
+  }
+  &.success,
+  &.warning,
+  &.error {
+    .alert {
+      > .content {}
+    }
+    .icon {
+      display: inline;
+      margin-right: $gutter-width/4;
+      visibility: visible;
+    }
+    .message {}
+  }
+  &.success {
+    background-color: $global-color-quaternary;
+    color: $global-color-gray-5;
+    .alert {
+      > .content {}
+    }
+    .icon {
+      @include icon-check;
+    }
+    .message {}
+  }
+  &.warning {
+    background-color: $global-color-septenary;
+    color: $global-color-gray-5;
+    .alert {
+      > .content {}
+    }
+    .icon {
+      @include icon-warning;
+    }
+    .message {}
+  }
+  &.error {
+    background-color: $global-color-primary;
+    .alert {
+      > .content {}
+    }
+    .icon {
+      @include icon-error;
+    }
+    .message {}
+  }
+}

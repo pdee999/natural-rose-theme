@@ -1,0 +1,375 @@
+.navbar {
+  @include gridle-grid(12);
+  @include gridle_state(tablet-landscape desktop site-width) {
+    @include gridle-grid(8);
+    //padding-right: $gutter-width * 3;
+  }
+  > .content {
+    @include row;
+  }
+  .navbar-toggle {
+    display: block;
+    margin: $gutter-width auto $gutter-width/2;
+    text-transform: uppercase;
+    height: 35px;
+    width: 50px;
+    border: $default-border;
+    font-size: .625em;
+    background-color: #fff;
+    @include gridle_state(mobile-portrait mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+      @include remove;
+    }
+    &:hover {
+      background-color: $global-color-quaternary;
+    }
+    //.icon-bar {
+    //  background-color: red;
+    //  display: block;
+    //  width: 90%;
+    //  height: 3px;
+    //  margin: 3px 0 0;
+    //}
+  }
+  .navbar-collapse {
+    @include gridle_grid(12);
+    max-height: 300px;
+    overflow: hidden;
+    opacity: 1;
+    transition-duration: .5s;
+    @include gridle_state(mobile-portrait) {
+      margin-top: $slug-height/6;
+      margin-bottom: $slug-height/-1.764705882352941;
+    }
+    @include gridle_state(tablet-landscape desktop site-width) {
+      position: relative;
+      overflow: visible;
+    }
+    &.collapsed {
+      @include gridle_state(wearable) {
+        max-height: 0;
+        opacity: 0;
+      }
+    }
+  }
+  .context-nav {
+    @include no-bullets;
+    //@include gridle_grid(12);
+    @include row;
+    margin-top: 0;
+    margin-bottom: 0;
+    @include gridle_state(mobile-portrait) {
+      margin-right: $gutter-width*1.75;
+      text-align: center;
+    }
+    @include gridle_state(mobile-landscape) {
+      padding-right: $gutter-width*1.5 !important;
+    }
+    @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+      @include no-row;
+      display: block;
+    }
+    @include gridle_state(mobile-landscape tablet-portrait) {
+      margin: $slug-height/3 0 $slug-height/6;
+      text-align: center;
+    }
+    @include gridle_state(tablet-landscape desktop site-width) {
+      text-align: right;
+      position: absolute;
+      bottom: 100%;
+      //right: $gutter-width/2;
+      right: 0;
+      padding-bottom: $slug-height/8.571428571428571;
+    }
+    .stuck & {
+      @include gridle_state(tablet-landscape desktop site-width) {
+        bottom: auto;
+        top: 0;
+        right: $gutter-width*1.25;
+      }
+    }
+    .nav-item {
+      @include gridle_grid(12);
+      text-align: center;
+      margin: $slug-height/6 0;
+      @include gridle_state(mobile-portrait) {
+        @include no-column;
+      }
+      @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+        //@include gridle_grid(4);
+        @include no-column;
+        display: inline-block;
+        margin: 0;
+        padding: 0 $gutter-width/5;
+      }
+      @include gridle_state(mobile-landscape tablet-portrait) {
+        //@include gridle_push(2);
+      }
+      @include gridle_state(tablet-landscape desktop site-width) {
+        //@include gridle_push(4);
+      }
+      //&:last-child {
+      //  @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+      //    margin: 0;
+      //  }
+      //}
+      .stuck & {
+        @include gridle_state(tablet-landscape desktop site-width) {
+          margin: 0;
+        }
+      }
+    }
+    a {
+      @extend %button-green-ghost;
+      font-family: $body-font;
+      font-size: 1em;
+      padding: $gutter-width/4 $gutter-width/2;
+      @include gridle_state(mobile-portrait) {
+        font-size: 1.5em;
+      }
+      @include gridle_state(mobile-portrait) {
+        border: none;
+        color: $global-color-secondary;
+      }
+      @include gridle_state(tablet-landscape) {
+        font-size: .75em;
+      }
+      @include gridle_state(desktop site-width) {
+        font-size: .875em;
+      }
+      .stuck & {
+        @include gridle_state(tablet-landscape desktop site-width) {
+          font-size: 1em;
+          padding: $slug-height/12 0;
+        }
+      }
+      &:hover {
+        @include gridle_state(mobile-portrait) {
+          background-color: transparent;
+          color: $global-color-primary;
+        }
+      }
+      .stuck & {
+        @include gridle_state(tablet-landscape desktop site-width) {
+          border: none;
+        }
+        &:hover {
+          @include gridle_state(tablet-landscape desktop site-width) {
+            background-color: transparent;
+            color: $global-color-primary;
+          }
+        }
+      }
+    }
+    .icon {
+      transition: none;
+    }
+    .label {
+      transition: none;
+      @include gridle_state(mobile-portrait) {
+        @include remove;
+      }
+      .stuck & {
+        @include gridle_state(tablet-landscape desktop site-width) {
+          @include remove;
+        }
+      }
+    }
+    .cart  {
+      a {}
+      .icon {
+        @include lead-icon-cart;
+        margin-left: $gutter-width/1.428571428571429;
+        @include gridle_state(mobile-portrait) {
+          padding: 0;
+        }
+        .stuck & {
+          @include gridle_state(tablet-landscape desktop site-width) {
+            padding-left: 0;
+          }
+        }
+      }
+      .label {}
+    }
+    .checkout {
+      a {}
+      .icon {
+        @include lead-icon-creditcard;
+        margin-left: $gutter-width/1.111111111111111;
+        @include gridle_state(mobile-portrait) {
+          padding: 0;
+        }
+        .stuck & {
+          @include gridle_state(tablet-landscape desktop site-width) {
+            padding-left: 0;
+          }
+        }
+      }
+      .label {}
+    }
+  }
+  .navbar-menu {
+    margin: 0;
+    @include no-bullets;
+    //@include gridle_grid(12);
+    @include row;
+    @include gridle_state(mobile-portrait mobile-landscape) {
+      bottom: 0;
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+    @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+      padding-right: $gutter-width * 2.25 !important;
+    }
+    @include gridle_state(tablet-portrait) {
+      margin-top: $slug-height/3;
+    }
+    .stuck & {
+      @include gridle_state(tablet-landscape desktop site-width) {
+        padding-right: $gutter-width*4.25 !important;
+      }
+    }
+    .nav-item {
+      font-family: $header-font;
+      font-size: 1.125em;
+      text-align: center;
+      padding: $slug-height/6 $gutter-width/2;
+      transition-property: font-size;
+      @include gridle_grid(12);
+      @include gridle_state(wearable) {
+        font-size: 1.5em;
+      }
+      @include gridle_state(mobile-portrait) {
+        //font-size: 1.75em;
+      }
+      @include gridle_state(mobile-portrait mobile-landscape) {
+        font-size: 1em;
+        padding: 0;
+      }
+      @include gridle_state(mobile-portrait mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+        @include gridle_grid(3);
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      @include gridle_state(tablet-portrait) {
+        font-size: 1.5em;
+      }
+      @include gridle_state(tablet-landscape) {
+        font-size: 1em;
+        padding-top: $slug-height/4.285714285714286;
+      }
+      @include gridle_state(desktop site-width) {
+        font-size: 1.375em;
+        padding-top: $slug-height/5.454545454545455;
+      }
+      @include gridle_state(site-width) {
+        font-size: 1.625em;
+        padding-top: $slug-height/5.454545454545455;
+      }
+      .stuck & {
+        @include gridle_state(tablet-landscape) {
+          font-size: 0.9375em;
+          padding-top: $slug-height/8.571428571428571;
+        }
+        @include gridle_state(desktop site-width) {
+          font-size: 1.125em;
+          padding-top: $slug-height/15;
+        }
+      }
+      > span {
+        display: block;
+        @include gridle_state(mobile-portrait mobile-landscape) {
+          @include aspect-ratio(1,1);
+        }
+      }
+      a {
+        display: block;
+        color: $nav-text-color;
+        transition-duration: .1s;
+        @include gridle_state(mobile-portrait mobile-landscape) {
+          background: $nav-item-background;
+          color: #fff;
+          border-right: $gray-border-1;
+          border-width: 1px;
+        }
+        &:hover {
+          color: $nav-text-hover-color;
+          @include gridle_state(mobile-portrait mobile-landscape) {
+            background: $nav-item-background-hover;
+          }
+        }
+      }
+      .icon {
+        @include gridle_state(mobile-portrait mobile-landscape) {
+          transition: none;
+          @include absolute-center;
+          position: absolute !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        &:before {
+          @include gridle_state(mobile-portrait mobile-landscape) {
+            display: block;
+            width: 100%;
+            position: relative !important;
+            right: auto !important;
+            margin-bottom: $slug-height/12;
+            font-size: 30px;
+          }
+        }
+      }
+      .label {}
+      &:last-child {
+        > span {}
+        a {
+          @include gridle_state(mobile-portrait mobile-landscape) {
+            border: none;
+          }
+        }
+        .icon {}
+        .label {}
+      }
+    }
+    .about {
+      > span {}
+      a {}
+      .icon {
+        @include gridle_state(mobile-portrait mobile-landscape) {
+          @include lead-icon-default;
+        }
+      }
+      .label {}
+    }
+    .shop {
+      > span {}
+      a {}
+      .icon {
+        @include gridle_state(mobile-portrait mobile-landscape) {
+          @include lead-icon-shop;
+        }
+      }
+      .label {}
+    }
+    .blog {
+      > span {}
+      a {}
+      .icon {
+        @include gridle_state(mobile-portrait mobile-landscape) {
+          @include lead-icon-blog;
+        }
+      }
+      .label {}
+    }
+    .contact {
+      > span {}
+      a {}
+      .icon {
+        @include gridle_state(mobile-portrait mobile-landscape) {
+          @include lead-icon-contact;
+        }
+      }
+      .label {}
+    }
+  }
+}

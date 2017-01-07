@@ -1,0 +1,19 @@
+%product {
+  > .content {}
+  .article-image {}
+  .image {
+    img {}
+  }
+  .article-body {}
+  .article-title {
+    font-size: 1.5em;
+  }
+  .price {
+    display: inline-block;
+    font-size: .875em;
+  }
+  .description {}
+  .button {
+    @extend %button-red-square;
+  }
+}

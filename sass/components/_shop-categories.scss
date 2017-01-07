@@ -1,0 +1,125 @@
+.shop-categories {
+  background-color: #fff;
+  .shop-categories-container {
+    @include container;
+  }
+  .shop-categories-row {
+    @include row;
+  }
+  .shop-categories-header {
+    @include gridle_grid(12);
+    text-align: center;
+    > .content {}
+  }
+  .title {
+    margin-top: 0;
+  }
+  .products {
+    @include gridle_grid(12);
+    > .content {}
+  }
+  .category-links {
+    @include no-bullets;
+    @include row;
+    @include flexbox;
+    @include flex-flow(row wrap);
+  }
+  .item {
+    @include gridle_grid(12);
+    @include flex(0 1 100%);
+    @include flexbox;
+    @include flex-flow(row wrap);
+    @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+      @include gridle_grid(6);
+      @include flex(0 1 50%);
+      max-width: 50%;
+    }
+    &:nth-child(2n+3) {
+      @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+        clear: both;
+      }
+    }
+  }
+  .link {
+    @include flex(0 1 100%);
+    @extend %button-green-square;
+    @extend %big-button;
+    //display: block;
+    margin: $slug-height/6 0;
+    max-width: 100%;
+    padding-left: $gutter-width*2;
+    padding-right: $gutter-width*2;
+    text-transform: none;
+    .icon,
+    .label {
+      display: block;
+      @include gridle_state(mobile-landscape desktop site-width) {
+        display: inline-block;
+      }
+    }
+    .icon {}
+    .label {}
+  }
+  .soaps {
+    .link {
+      .icon {
+        @include icon-soap-alt;
+      }
+      .label {}
+    }
+  }
+  .lotions {
+    .link {
+      .icon {
+        @include icon-lotion;
+      }
+      .label {}
+    }
+  }
+  .bath-salts {
+    .link {
+      .icon {
+        @include icon-salt;
+      }
+      .label {}
+    }
+  }
+  .scrubs {
+    .link {
+      .icon {
+        @include icon-scrub;
+      }
+      .label {}
+    }
+  }
+  .perfumes {
+    .link {
+      .icon {
+        @include icon-perfume;
+      }
+      .label {}
+    }
+  }
+  .shampoos {
+    .link {
+      .icon {
+        @include icon-shampoo;
+      }
+      .label {}
+    }
+  }
+  .all {
+    @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+      @include gridle_grid(12);
+      @include flex(0 1 100%);
+      max-width: 100%;
+    }
+    .link {
+      @extend %button-red-square;
+      @extend %big-button;
+      display: block;
+      .icon {}
+      .label {}
+    }
+  }
+}

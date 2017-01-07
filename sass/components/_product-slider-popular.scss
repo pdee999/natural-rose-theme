@@ -1,0 +1,37 @@
+.product-slider-popular {
+  @extend %product-slider;
+  .product-slider-popular-container {
+    @include container;
+  }
+  .product-slider-popular-row {
+    @include row;
+  }
+  .product-slider-popular-header {
+    @include gridle_grid(12);
+    text-align: center;
+    > .content {}
+  }
+  .title {}
+  .product-slider {
+    > .content {}
+  }
+  .slick {
+    &.slick-slider {}
+    .slick-prev {}
+    .slick-next {}
+    .slick-dots {}
+  }
+  .product-list {}
+  .product {
+    > .content {}
+  }
+  .article-image {}
+  .image {
+    img {}
+  }
+  .article-body {}
+  .article-title {}
+  .price {}
+  .description {}
+  .button {}
+}

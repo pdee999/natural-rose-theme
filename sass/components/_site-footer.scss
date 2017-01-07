@@ -1,0 +1,309 @@
+.site-footer {
+  background-color: $global-color-gray-5;
+  color: #fff;
+  padding: $slug-height 0;
+  .sticky-footer & {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  a {
+    color: #fff;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .footer-container {
+    @include container;
+  }
+  .footer-row {
+    @include row;
+  }
+  .featured-products {
+    @include gridle_grid(12);
+    @include gridle_state(desktop site-width) {
+      @include gridle_grid(4);
+      padding: 0 $gutter-width*2 0 0;
+    }
+    @include headings() {
+      color: #fff;
+      margin: $slug-height/3 0;
+      text-align: center;
+      @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+        text-align: left;
+      }
+      @include gridle_state(desktop site-widt) {
+        margin: 0 0 $slug-height/3;
+      }
+    }
+    .product-list {
+      @include row;
+    }
+    .product {
+      @include gridle_grid(12);
+      @extend %product;
+      border-bottom: $white-border;
+      margin-bottom: $slug-height/3;
+      padding-bottom: $slug-height/6;
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+      > .content {
+        @include row;
+        display: block;
+      }
+      .article-image {
+        @include gridle_grid(12);
+        margin-bottom: $slug-height/3;
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          @include gridle_grid(3);
+          float: right;
+          margin-bottom: 0;
+        }
+        //@include gridle_state(tablet-portrait tablet-landscape) {
+        //  @include gridle_grid(2);
+        //}
+      }
+      .image {
+        img {}
+      }
+      .article-body {
+        @include gridle_grid(12);
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          float: right;
+        }
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          @include gridle_grid(9);
+        }
+        //@include gridle_state(tablet-portrait tablet-landscape) {
+        //  @include gridle_grid(10);
+        //}
+      }
+      .article-title {
+        font-size: 1.125em;
+        margin: 0;
+        text-align: center;
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          text-align: left;
+        }
+      }
+      .price {
+        display: block;
+        text-align: center;
+        margin-top: $slug-height/12;
+        margin-bottom: $slug-height/12;
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          text-align: left;
+        }
+      }
+      .description {
+        @include remove;
+        font-size: 1em;
+        margin: $slug-height/12 0;
+      }
+    }
+  }
+  .mentions {
+    @include gridle_grid(12);
+    @include gridle_state(desktop site-width) {
+      @include gridle_grid(5);
+      padding: 0 $gutter-width*3 0 $gutter-width*2;
+    }
+    @include headings() {
+      color: #fff;
+      margin: $slug-height/3 0;
+      text-align: center;
+      @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+        text-align: left;
+      }
+      @include gridle_state(desktop site-width) {
+        margin: 0 0 $slug-height/3;
+      }
+    }
+    .mention-list {
+      @include row;
+    }
+    .mention {
+      @include gridle_grid(12);
+      @extend %mention;
+      border-bottom: $white-border;
+      margin-bottom: $slug-height/3;
+      padding-bottom: $slug-height/6;
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+      > .content {
+        @include row;
+      }
+      .article-image {
+        @include gridle_grid(12);
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          @include gridle_grid(3);
+          float: right;
+        }
+      }
+      .image {
+        img {}
+      }
+      .caption {}
+      .article-body {
+        @include gridle_grid(12);
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          @include gridle_grid(9);
+          float: right;
+        }
+      }
+      .article-title {
+        font-size: 1.125em;
+        margin: 0;
+        text-align: center;
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          display: inline-block;
+          text-align: left;
+        }
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape site-width) {
+          width: 70%;
+        }
+        @include gridle_state(desktop) {
+          width: 61%;
+        }
+      }
+      .date {
+        display: block;
+        text-align: center;
+        margin: $slug-height/12 0 $slug-height/6;
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          display: inline-block;
+          margin: 0;
+          text-align: right;
+        }
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape site-width) {
+          width: 28%;
+        }
+        @include gridle_state(desktop) {
+          width: 37%;
+        }
+      }
+      .quote {
+        font-size: 1em;
+        margin-top: $slug-height/12;
+        margin-bottom: $slug-height/12;
+      }
+    }
+  }
+  .footer-info {
+    @include gridle_grid(12);
+    padding-top: $slug-height/3;
+    text-align: center;
+    @include gridle_state(desktop site-width) {
+      @include gridle_grid(3);
+      padding: $slug-height/1.2 0 0;
+      text-align: right;
+    }
+    .footernav{
+      > .content{
+        @include row;
+      }
+      .nav-item {
+        .content {}
+        a {}
+        .icon {}
+        .label {}
+      }
+      .social-menu {
+        @include gridle_grid(12);
+        @extend %social-menu;
+        .nav-item {
+          font-size: 1.5em;
+          .content {}
+          a {
+            color: #fff;
+            &:hover {
+              color: $global-color-quaternary;
+            }
+          }
+          .icon {}
+          .label {
+            font-size: .5em;
+            letter-spacing: .0833333333333333em;
+          }
+        }
+        .facebook {}
+        .twitter {}
+        .pinterest{}
+        .instagram {}
+      }
+      .footer-menu {
+        @include no-bullets;
+        @include gridle_grid(12);
+        margin-bottom: $slug-height/30;
+        padding: 0 $gutter-width/2;
+        .nav-item {
+          border-right: $white-border;
+          display: inline-block;
+          font-size: .875em;
+          //margin: 0 $gutter-width/4 0 0;
+          margin: 0;
+          padding-right: $gutter-width/4;
+          &:last-child {
+            border: none;
+            //margin-right: 0;
+            padding-right: 0;
+          }
+          .content {
+            display: block;
+          }
+          a {
+            display: block;
+          }
+          .icon {}
+          .label {}
+        }
+        .home {}
+        .about {}
+        .shop{}
+        .blog {}
+        .contact {}
+      }
+      .utility-menu {
+        @include no-bullets;
+        @include gridle_grid(12);
+        margin-top: $slug-height/30;
+        padding: 0 $gutter-width/2;
+        .nav-item {
+          border-right: $white-border;
+          display: inline-block;
+          font-size: .875em;
+          //margin: 0 $gutter-width/4 0 0;
+          margin: 0;
+          padding-right: $gutter-width/4;
+          &:last-child {
+            border: none;
+            //margin-right: 0;
+            padding-right: 0;
+          }
+          .content {
+            display: block;
+          }
+          a {
+            display: block;
+          }
+          .icon {}
+          .label {}
+        }
+        .privacy {}
+        .terms {}
+      }
+    }
+    .copyright {
+      font-size: .875em;
+      @include row;
+      span {
+        @include gridle_grid(12);
+      }
+    }
+  }
+}

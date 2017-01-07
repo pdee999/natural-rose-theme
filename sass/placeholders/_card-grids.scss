@@ -1,0 +1,251 @@
+%card-grid {
+  @include row;
+  %card,
+  .grid-sizer {
+    @include gridle_grid(12);
+    margin-bottom : $slug-height/3;
+  }
+
+  &%two-columns {
+    %card,
+    .grid-sizer {
+      @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+        @include gridle_grid(6);
+      }
+      &:not(.slide):nth-of-type(2n+3) {
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          clear: both;
+        }
+      }
+      &.featured {
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          @include gridle_grid(12);
+        }
+      }
+    }
+    &%single-row {
+      %card {
+        &:nth-of-type(2n+3) {
+          @include remove;
+        }
+      }
+    }
+  }
+
+  &%three-columns {
+    %card,
+    .grid-sizer {
+      @include gridle_state(tablet-portrait tablet-landscape) {
+        @include gridle_grid(6);
+      }
+      @include gridle_state(desktop site-width) {
+        @include gridle_grid(4);
+      }
+      &:not(.slide):nth-of-type(2n+3) {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          clear: both;
+        }
+      }
+      &:not(.slide):nth-of-type(3n+4) {
+        @include gridle_state(desktop site-width) {
+          clear: both;
+        }
+      }
+      &.featured {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          @include gridle_grid(12);
+        }
+        @include gridle_state(desktop site-width) {
+          @include gridle_grid(6);
+        }
+      }
+    }
+    &%single-row {
+      %card {
+        @include gridle_state(tablet-portrait) {
+          @include gridle_grid(12);
+        }
+        @include gridle_state(tablet-landscape) {
+          @include gridle_grid(4);
+        }
+        &:nth-of-type(3n+4) {
+          @include remove;
+        }
+      }
+    }
+  }
+
+  &%four-columns {
+    %card,
+    .grid-sizer {
+      @include gridle_state(tablet-portrait tablet-landscape) {
+        @include gridle_grid(6);
+      }
+      @include gridle_state(desktop site-width) {
+        @include gridle_grid(3);
+      }
+      &:not(.slide):nth-of-type(2n+3) {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          clear: both;
+        }
+      }
+      &:not(.slide):nth-of-type(4n+5) {
+        @include gridle_state(desktop site-width) {
+          clear: both;
+        }
+      }
+      &.featured {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          @include gridle_grid(12);
+        }
+        @include gridle_state(desktop site-width) {
+          @include gridle_grid(6);
+        }
+      }
+    }
+    &%single-row {
+      %card {
+        &:nth-of-type(4n+5) {
+          @include remove;
+        }
+      }
+    }
+  }
+
+  &%five-columns {
+    %card,
+    .grid-sizer {
+      @include gridle_state(tablet-portrait tablet-landscape) {
+        @include gridle_grid(6);
+      }
+      @include gridle_state(desktop site-width) {
+        @include gridle_grid('1on5');
+      }
+      &:not(.slide):nth-of-type(2n+3) {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          clear: both;
+        }
+      }
+      &:not(.slide):nth-of-type(5n+6) {
+        @include gridle_state(desktop site-width) {
+          clear: both;
+        }
+      }
+      &.featured {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          @include gridle_grid(12);
+        }
+        @include gridle_state(desktop site-width) {
+          @include gridle_grid(6);
+        }
+      }
+    }
+    &%single-row {
+      %card {
+        &:last-child {
+          @include gridle_state(tablet-portrait tablet-landscape) {
+            @include gridle_grid(12);
+          }
+        }
+        &:nth-of-type(5n+6) {
+          @include remove;
+        }
+      }
+    }
+  }
+
+  &%flex {
+    @include flexbox;
+    @include flex-flow(row wrap);
+    &.slick {
+      .slick-track {
+        height: 100%;
+      }
+    }
+    %card,
+    .grid-sizer {
+      @include flex(0 1 100%);
+      @include flexbox;
+      @include flex-flow(row wrap);
+      > .content {
+        @include flex(0 1 100%);
+      }
+    }
+
+    &%two-columns {
+      %card,
+      .grid-sizer {
+        @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+          @include flex(0 1 50%);
+        }
+        &.featured {
+          @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+            @include flex(0 1 100%);
+          }
+        }
+      }
+    }
+
+    &%three-columns {
+      %card,
+      .grid-sizer {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          @include flex(0 1 50%);
+        }
+        @include gridle_state(desktop site-width) {
+          @include flex(0 1 33.33333333333333%);
+        }
+      }
+      &.featured {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          @include flex(0 1 100%);
+        }
+        @include gridle_state(desktop site-width) {
+          @include flex(0 1 50%);
+        }
+      }
+    }
+
+    &%four-columns {
+      %card,
+      .grid-sizer {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          @include flex(0 1 50%);
+        }
+        @include gridle_state(desktop site-width) {
+          @include flex(0 1 25%);
+        }
+        &.featured {
+          @include gridle_state(tablet-portrait tablet-landscape) {
+            @include flex(0 1 100%);
+          }
+          @include gridle_state(desktop site-width) {
+            @include flex(0 1 50%);
+          }
+        }
+      }
+    }
+
+    &%five-columns {
+      %card,
+      .grid-sizer {
+        @include gridle_state(tablet-portrait tablet-landscape) {
+          @include flex(0 1 50%);
+        }
+        @include gridle_state(desktop site-width) {
+          @include gridle_grid('1on5');
+        }
+        &.featured {
+          @include gridle_state(tablet-portrait tablet-landscape) {
+            @include flex(0 1 100%);
+          }
+          @include gridle_state(desktop site-width) {
+            @include flex(0 1 50%);
+          }
+        }
+      }
+    }
+
+  }
+
+}

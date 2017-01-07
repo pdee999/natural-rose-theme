@@ -1,0 +1,855 @@
+@mixin icon {
+  &:before,
+  &:after {
+    font-family: "natural-rose";
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    display: inline-block;
+    text-decoration: inherit;
+    //width: 1em;
+    //line-height: 1em;
+    @media speech {
+      speak: none;
+    }
+  }
+}
+@mixin lead-icon {
+  margin-left: 16px;
+  padding-left: 10px;
+  position: relative;
+  &:before {
+    //color: $global-color-secondary;
+    position: absolute;
+    right: 100%;
+  }
+}
+@mixin bullet-icon {
+  list-style: none;
+  &:before,
+  &:after {
+    font-size: .5em;
+    top: 10px;
+  }
+  &:after {
+    //color: $global-color-secondary;
+    margin-left: 5px;
+    vertical-align: middle;
+    // position: absolute;
+    // left: 100%;
+    // top: .635em;
+  }
+}
+
+
+//TRAILING ICONS
+@mixin icon-default {
+  @include icon;
+  &:after {
+    content: '\e800';
+  }
+}
+@mixin icon-etsy {
+  @include icon;
+  &:after {
+    content: '\e83b';
+  }
+}
+@mixin icon-facebook {
+  @include icon;
+  &:after {
+    content: '\e801';
+  }
+}
+@mixin icon-twitter {
+  @include icon;
+  &:after {
+    content: '\e802';
+  }
+}
+@mixin icon-youtube {
+  @include icon;
+  &:after {
+    content: '\e803';
+  }
+}
+@mixin icon-linkedin {
+  @include icon;
+  &:after {
+    content: '\e804';
+  }
+}
+@mixin icon-googleplus {
+  @include icon;
+  &:after {
+    content: '\e805';
+  }
+}
+@mixin icon-instagram {
+  @include icon;
+  &:after {
+    content: '\e806';
+  }
+}
+@mixin icon-pinterest {
+  @include icon;
+  &:after {
+    content: '\e807';
+  }
+}
+@mixin icon-phone {
+  @include icon;
+  &:after {
+    content: '\e808';
+  }
+}
+@mixin icon-email {
+  @include icon;
+  &:after {
+    content: '\e809';
+  }
+}
+@mixin icon-location {
+  @include icon;
+  &:after {
+    content: '\e80a';
+  }
+}
+@mixin icon-vcard {
+  @include icon;
+  &:after {
+    content: '\e80b';
+  }
+}
+@mixin icon-qrcode {
+  @include icon;
+  &:after {
+    content: '\e80c';
+  }
+}
+@mixin icon-star {
+  @include icon;
+  &:after {
+    content: '\e833';
+  }
+}
+@mixin icon-staroutline {
+  @include icon;
+  &:after {
+    content: '\e832';
+  }
+}
+@mixin icon-halfstar {
+  @include icon;
+  &:after {
+    content: '\e80e';
+  }
+}
+@mixin icon-halfstaroutline {
+  @include icon;
+  &:after {
+    content: '\e80d';
+  }
+}
+@mixin icon-caretleft {
+  @include icon;
+  &:after {
+    content: '\e80f';
+  }
+}
+@mixin icon-caretup {
+  @include icon;
+  &:after {
+    content: '\e810';
+  }
+}
+@mixin icon-caretdown {
+  @include icon;
+  &:after {
+    content: '\e811';
+  }
+}
+@mixin icon-caretright {
+  @include icon;
+  &:after {
+    content: '\e812';
+  }
+}
+@mixin icon-arrowright {
+  @include icon;
+  &:after {
+    content: '\e813';
+  }
+}
+@mixin icon-arrowleft {
+  @include icon;
+  &:after {
+    content: '\e814';
+  }
+}
+@mixin icon-arrowup {
+  @include icon;
+  &:after {
+    content: '\e815';
+  }
+}
+@mixin icon-arrowdown {
+  @include icon;
+  &:after {
+    content: '\e816';
+  }
+}
+@mixin icon-plus {
+  @include icon;
+  &:after {
+    content: '\e817';
+  }
+}
+@mixin icon-minus {
+  @include icon;
+  &:after {
+    content: '\e818';
+  }
+}
+@mixin icon-cart {
+  @include icon;
+  &:after {
+    content: '\e819';
+  }
+}
+@mixin icon-quoteleft {
+  @include icon;
+  &:after {
+    content: '\e81a';
+  }
+}
+@mixin icon-quoteright {
+  @include icon;
+  &:after {
+    content: '\e81b';
+  }
+}
+@mixin icon-quoteleft-alt {
+  @include icon;
+  &:after {
+    content: '\e81c';
+  }
+}
+@mixin icon-quoteright-alt {
+  @include icon;
+  &:after {
+    content: '\e81d';
+  }
+}
+@mixin icon-check {
+  @include icon;
+  &:after {
+    content: '\e81e';
+  }
+}
+@mixin icon-error {
+  @include icon;
+  &:after {
+    content: '\e83c';
+  }
+}
+@mixin icon-warning {
+  @include icon;
+  &:after {
+    content: '\e81f';
+  }
+}
+@mixin icon-search {
+  @include icon;
+  &:after {
+    content: '\e820';
+  }
+}
+@mixin icon-blog {
+  @include icon;
+  &:after {
+    content: '\e821';
+  }
+}
+@mixin icon-shop {
+  @include icon;
+  &:after {
+    content: '\e822';
+  }
+}
+@mixin icon-contact {
+  @include icon;
+  &:after {
+    content: '\e823';
+  }
+}
+@mixin icon-hotprocess {
+  @include icon;
+  &:after {
+    content: '\e824';
+  }
+}
+@mixin icon-coldprocess {
+  @include icon;
+  &:after {
+    content: '\e825';
+  }
+}
+@mixin icon-organic {
+  @include icon;
+  &:after {
+    content: '\e826';
+  }
+}
+@mixin icon-vegan {
+  @include icon;
+  &:after {
+    content: '\e827';
+  }
+}
+@mixin icon-soap {
+  @include icon;
+  &:after {
+    content: '\e828';
+  }
+}
+@mixin icon-soap-alt {
+  @include icon;
+  &:after {
+    content: '\e83d';
+  }
+}
+@mixin icon-salt {
+  @include icon;
+  &:after {
+    content: '\e829';
+  }
+}
+@mixin icon-lotion {
+  @include icon;
+  &:after {
+    content: '\e82a';
+  }
+}
+@mixin icon-lotion-alt {
+  @include icon;
+  &:after {
+    content: '\e82b';
+  }
+}
+@mixin icon-gift {
+  @include icon;
+  &:after {
+    content: '\e82c';
+  }
+}
+@mixin icon-health {
+  @include icon;
+  &:after {
+    content: '\e82d';
+  }
+}
+@mixin icon-perfume {
+  @include icon;
+  &:after {
+    content: '\e82e';
+  }
+}
+@mixin icon-shampoo {
+  @include icon;
+  &:after {
+    content: '\e82f';
+  }
+}
+@mixin icon-scrub {
+  @include icon;
+  &:after {
+    content: '\e830';
+  }
+}
+@mixin icon-toothpaste {
+  @include icon;
+  &:after {
+    content: '\e831';
+  }
+}
+@mixin icon-creditcard {
+  @include icon;
+  &:after {
+    content: '\e83a';
+  }
+}
+@mixin icon-visa {
+  @include icon;
+  &:after {
+    content: '\e834';
+  }
+}
+@mixin icon-mastercard {
+  @include icon;
+  &:after {
+    content: '\e835';
+  }
+}
+@mixin icon-americanexpress {
+  @include icon;
+  &:after {
+    content: '\e836';
+  }
+}
+@mixin icon-discovercard {
+  @include icon;
+  &:after {
+    content: '\e837';
+  }
+}
+@mixin icon-paypal {
+  @include icon;
+  &:after {
+    content: '\e838';
+  }
+}
+@mixin icon-loading {
+  @include icon;
+  &:after {
+    content: '\e839';
+  }
+}
+
+//LEADING ICONS
+@mixin lead-icon-default {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e800';
+  }
+}
+@mixin lead-icon-etsy {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e83b';
+  }
+}
+@mixin lead-icon-facebook {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e801';
+  }
+}
+@mixin lead-icon-twitter {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e802';
+  }
+}
+@mixin lead-icon-youtube {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e803';
+  }
+}
+@mixin lead-icon-linkedin {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e804';
+  }
+}
+@mixin lead-icon-googleplus {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e805';
+  }
+}
+@mixin lead-icon-instagram {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e806';
+  }
+}
+@mixin lead-icon-pinterest {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e807';
+  }
+}
+@mixin lead-icon-phone {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e808';
+  }
+}
+@mixin lead-icon-email {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e809';
+  }
+}
+@mixin lead-icon-location {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e80a';
+  }
+}
+@mixin lead-icon-vcard {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e80b';
+  }
+}
+@mixin lead-icon-qrcode {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e80c';
+  }
+}
+@mixin lead-icon-star {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e833';
+  }
+}
+@mixin lead-icon-staroutline {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e832';
+  }
+}
+@mixin lead-icon-halfstar {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e80e';
+  }
+}
+@mixin lead-icon-halfstaroutline {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e80d';
+  }
+}
+@mixin lead-icon-caretleft {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e80f';
+  }
+}
+@mixin lead-icon-caretup {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e810';
+  }
+}
+@mixin lead-icon-caretdown {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e811';
+  }
+}
+@mixin lead-icon-caretright {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e812';
+  }
+}
+@mixin lead-icon-arrowright {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e813';
+  }
+}
+@mixin lead-icon-arrowleft {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e814';
+  }
+}
+@mixin lead-icon-arrowup {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e815';
+  }
+}
+@mixin lead-icon-arrowdown {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e816';
+  }
+}
+@mixin lead-icon-plus {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e817';
+  }
+}
+@mixin lead-icon-minus {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e818';
+  }
+}
+@mixin lead-icon-cart {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e819';
+  }
+}
+@mixin lead-icon-quoteleft {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e81a';
+  }
+}
+@mixin lead-icon-quoteright {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e81b';
+  }
+}
+@mixin lead-icon-quoteleft-alt {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e81c';
+  }
+}
+@mixin lead-icon-quoteright-alt {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e81d';
+  }
+}
+@mixin lead-icon-check {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e81e';
+  }
+}
+@mixin lead-icon-error {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e83c';
+  }
+}
+@mixin lead-icon-warning {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e81f';
+  }
+}
+@mixin lead-icon-search {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e820';
+  }
+}
+@mixin lead-icon-blog {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e821';
+  }
+}
+@mixin lead-icon-shop {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e822';
+  }
+}
+@mixin lead-icon-contact {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e823';
+  }
+}
+@mixin lead-icon-hotprocess {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e824';
+  }
+}
+@mixin lead-icon-coldprocess {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e825';
+  }
+}
+@mixin lead-icon-organic {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e826';
+  }
+}
+@mixin lead-icon-vegan {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e827';
+  }
+}
+@mixin lead-icon-soap {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e828';
+  }
+}
+@mixin lead-icon-soap-alt {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e83d';
+  }
+}
+@mixin lead-icon-salt {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e829';
+  }
+}
+@mixin lead-icon-lotion {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e82a';
+  }
+}
+@mixin lead-icon-lotion-alt {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e82b';
+  }
+}
+@mixin lead-icon-gift {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e82c';
+  }
+}
+@mixin lead-icon-health {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e82d';
+  }
+}
+@mixin lead-icon-perfume {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e82e';
+  }
+}
+@mixin lead-icon-shampoo {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e82f';
+  }
+}
+@mixin lead-icon-scrub {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e830';
+  }
+}
+@mixin lead-icon-toothpaste {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e831';
+  }
+}
+@mixin lead-icon-creditcard {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e83a';
+  }
+}
+@mixin lead-icon-visa {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e834';
+  }
+}
+@mixin lead-icon-mastercard {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e835';
+  }
+}
+@mixin lead-icon-americanexpress {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e836';
+  }
+}
+@mixin lead-icon-discovercard {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e837';
+  }
+}
+@mixin lead-icon-paypal {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e838';
+  }
+}
+@mixin lead-icon-loading {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e839';
+  }
+}

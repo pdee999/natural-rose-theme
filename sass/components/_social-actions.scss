@@ -1,0 +1,223 @@
+.social-actions {
+  background-color: #fff;
+  &:first-child {
+    .site-header + main &,
+    .sticky-wrapper + main & {
+      padding-top: 0;
+    }
+  }
+  .social-actions-container {
+    @include container;
+    //padding-top: $slug-height;
+    //padding-bottom: $slug-height;
+  }
+  .social-actions-row {
+    @include row;
+    //background-color: $global-color-primary;
+  }
+  .social-actions-banner {
+    @include gridle_grid(12);
+    background-color: $global-color-primary;
+    color: #fff;
+    //margin: $slug-height/-1.111111111111111 auto;
+    margin: 0 auto;
+    padding-top: $slug-height/3;
+    padding-bottom: $slug-height/3;
+    text-align: center;
+    @include gridle_state(wearable mobile-portrait) {
+      display: block;
+      float: none;
+      max-width: 300px;
+    }
+    @include gridle_state(mobile-landscape) {
+      //margin: $slug-height/-1.016949152542373 0;
+    }
+    @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+      margin: 0;
+    }
+    @include gridle_state(mobile-landscape tablet-portrait tablet-landscape) {
+      @include gridle_grid(6);
+      @include gridle_push(3);
+      //margin: $slug-height/-1.016949152542373 0;
+    }
+    @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+      //margin: $slug-height/-1.714285714285714 0;
+    }
+    @include gridle_state(desktop site-width) {
+      @include gridle_grid(4);
+      @include gridle_push(4);
+    }
+    &:before,
+    &:after {
+      @include vertical-center;
+      display: block;
+      height: 1px;
+      background-color: $global-color-primary;
+      width: 80px;
+      @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+        content: "";
+      }
+      @include gridle_state(tablet-landscape) {
+        width: 120px;
+      }
+      @include gridle_state(desktop) {
+        width: 200px;
+      }
+      @include gridle_state(site-width) {
+        width: 250px;
+      }
+    }
+    &:before {
+      right: 100%;
+    }
+    &:after {
+      left: 100%;
+    }
+    > .content {
+      @include row;
+    }
+    .follow-us,
+    .share-this,
+    &.follow.share .follow-us,
+    &.follow.share .share-this {
+      @include gridle_grid(12);
+      margin-top: $slug-height/6;
+      margin-bottom: $slug-height/6;
+      @include gridle_state(tablet-portrait tablet-landscape desktop site-width){
+        @include gridle_grid(6);
+        margin: 0;
+      }
+      &:nth-child(1):nth-last-child(2) {
+        @include gridle_state(tablet-portrait tablet-landscape desktop site-width){
+          border-right: $white-border;
+        }
+      }
+      > .content {}
+      .title {
+        color: #fff;
+        font-size: 1.375em;
+        margin-top: 0;
+        margin-bottom: $slug-height/6;
+        vertical-align: middle;
+        @include gridle_state(mobile-landscape tablet-portrait desktop) {
+          //padding: $slug-height/12 $gutter-width/4 $slug-height/12 0;
+        }
+        @include gridle_state(tablet-landscape) {
+          //padding: $slug-height/12 $gutter-width/1.333333333333333 $slug-height/12 0;
+          //margin-right: $gutter-width/2;
+        }
+        @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+          //border-right: $white-border;
+          //display: inline-block;
+          //margin-bottom: 0;
+        }
+        @include gridle_state(site-width) {
+          //padding: $slug-height/12 $gutter-width $slug-height/12 0;
+          //margin-right: $gutter-width/1.333333333333333;
+        }
+      }
+      .social-menu {
+        @extend %social-menu;
+        vertical-align: middle;
+        @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+          //display: inline-block;
+        }
+        .nav-item {
+          .content {}
+          a {
+            color: #fff;
+            &:hover {
+              color: $global-color-quaternary;
+            }
+          }
+          .icon {}
+          .label {}
+        }
+        .facebook {}
+        .twitter {}
+        .pinterest{}
+        .instagram {}
+      }
+    }
+    &.follow,
+    &.share {
+      .follow-us,
+      .share-this {
+        @include gridle_grid(12);
+        margin: 0;
+        @include gridle_state(tablet-portrait tablet-landscape desktop site-width){
+          @include gridle_grid(12);
+        }
+        &:nth-child(1):nth-last-child(2) {
+          @include gridle_state(tablet-portrait tablet-landscape desktop site-width){
+            border-right: none;
+          }
+        }
+        > .content {}
+        .title {
+          font-size: 1.375em;
+          margin-top: 0;
+          margin-bottom: $slug-height/4;
+          @include gridle_state(mobile-landscape tablet-portrait desktop) {
+            padding: $slug-height/12 $gutter-width/4 $slug-height/12 0;
+          }
+          @include gridle_state(tablet-landscape) {
+            padding: $slug-height/12 $gutter-width/1.333333333333333 $slug-height/12 0;
+            margin-right: $gutter-width/2;
+          }
+          @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+            border-right: $white-border;
+            display: inline-block;
+            margin-bottom: 0;
+          }
+          @include gridle_state(site-width) {
+            padding: $slug-height/12 $gutter-width $slug-height/12 0;
+            margin-right: $gutter-width/1.333333333333333;
+          }
+        }
+        .social-menu {
+          @extend %social-menu;
+          vertical-align: middle;
+          @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+            display: inline-block;
+          }
+          .nav-item {
+            //font-size: 1.875em;
+            .content {}
+            a {}
+            .icon {}
+            .label {
+              //font-size: .3333333333333333em;
+            }
+          }
+          .facebook {}
+          .twitter {}
+          .pinterest{}
+          .instagram {}
+        }
+      }
+    }
+    &.follow {
+      .share-this {
+        @include remove;
+      }
+    }
+    &.share {
+      .follow-us {
+        @include remove;
+      }
+    }
+    &.follow.share {
+      .follow-us,
+      .share-this {
+        display: block;
+        visibility: visible;
+        > .content {}
+        .title {
+          border: none;
+          padding: 0;
+        }
+      }
+    }
+  }
+}

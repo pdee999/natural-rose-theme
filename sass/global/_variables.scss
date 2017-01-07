@@ -1,0 +1,97 @@
+//Images
+$site-logo-1:						url('../../img/logo.svg');//Horizontal Logo
+$site-logo-2:						url('../../img/logo-alt.svg');//Vertical Logo
+$site-logo-3:						url('../../img/logo-icon.svg');//Icon Logo
+
+//Layout
+$site-width: 						1200px;//used as max-width throughout. Layout is fluid below this.
+$gutter-width: 						20px;
+$slug-height:						60px;
+
+//Breakpoints (these should match bootstrap breakpoints)
+$breakpoint-desktop: 				$site-width;
+$breakpoint-tablet-landscape: 		992px;
+$breakpoint-tablet-portrait: 		768px;
+$breakpoint-handheld-landscape:		680px;
+$breakpoint-handheld-portrait:		480px;
+$breakpoint-wearable:				320px;
+
+//Large Screen Breakpoints - Use only if needed
+$breakpoint-wxga: 					1440px;
+$breakpoint-hd:						1600px;
+$breakpoint-fhd:					1920px;
+$breakpoint-retina:  				2048px;
+
+//Z-index Layers
+$z-modal:							900;//modal windows, popups
+$z-overlay:							800;//any page dimmers or other overlays below that
+$z-dropdown:						700;
+$z-header:							600;//header region
+$z-content:							500;//content region
+$z-footer:							400;//footer region
+
+//Typography
+$body-font:							'Varela Round', 'Trebuchet MS', Helvetica, sans-serif;
+$header-font:						'chunkfiveroman', Impact, Charcoal, sans-serif;
+$alt-font:							$body-font;
+$system-font:						$alt-font;
+
+//Colors
+$global-color-primary:				#a32406;//Dark Red
+$global-color-secondary:			#6a942d;//Dark Green
+$global-color-tertiary:				#0d2d82;//Dark Blue
+$global-color-quaternary:			#e2f9b5;//Light Green
+$global-color-quinary:				#fab8a8;//Light Red
+$global-color-senary:				#ced9f8;//Light Blue
+$global-color-septenary:			#fbf295;//Yellow
+//$global-color-octonary:			#dde4eb;
+//$global-color-nonary:				#0074c1;
+//$global-color-denary:				#055e9a;
+//$global-color-undenary:			#eceef2;
+//$global-color-duodenary:			#f4f4f4;
+//$global-color-tredenary:			#768190;
+$global-color-gray-1:				#efefef;
+$global-color-gray-2:				#727272;
+$global-color-gray-3:				#272727;
+$global-color-gray-4:               #232323;
+$global-color-gray-5:               #1e1e1e;
+
+//Social Media Colors
+$social-color-facebook-blue:		#3b5998;
+$social-color-twitter-blue:			#4099ff;
+$social-color-instagram-blue:		#3b5998;
+$social-color-instagram-green:		#adc41c;
+$social-color-youtube-red:			#bb0000;
+$social-color-linkedin-blue:		#007bb6;
+
+//Content Colors
+$body-text-color:					$global-color-gray-5;
+$h1-color:							#000;
+$h2-color:							$h1-color;
+$h3-color:							$h1-color;
+$h4-color:							$h1-color;
+$h5-color:							$global-color-primary;
+$h6-color:							$global-color-secondary;
+$link-color:						$global-color-tertiary;
+$link-hover-color:					$global-color-primary;
+$default-border:					1px solid $global-color-primary;
+$white-border:						1px solid #fff;
+$black-border:						1px solid #000;
+$gray-border-1:						1px solid $global-color-gray-1;
+$gray-border-2:						1px solid $global-color-gray-2;
+$gray-border-3:						1px solid $global-color-gray-3;
+$gray-border-4:						1px solid $global-color-gray-4;
+$gray-border-5:						1px solid $global-color-gray-5;
+$callout-box-bgcolor:				$global-color-quaternary;
+$default-text-shadow:				2px 2px 2px #000;
+
+//Nav Colors
+$nav-base-color:					#000;
+$nav-background: 					#fff;
+$nav-item-background: 				$global-color-gray-5;
+$nav-item-background-hover: 		$global-color-gray-2;
+$nav-item-background-active:		$global-color-gray-3;
+$nav-text-color:					#000;
+$nav-text-hover-color:				$global-color-primary;
+$subnav-text-color:					$nav-base-color;
+$subnav-hover-color:				$nav-text-hover-color;

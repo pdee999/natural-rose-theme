@@ -1,0 +1,123 @@
+//Containers defined in global/placeholders
+
+// import gridle
+@import '../../../libs/gridle/sass/gridle/_gridle';
+
+// import Variables
+@import '../_variables';
+
+// setup the grid (required)
+@include gridle_setup((
+	context : 12,              			// number of columns in your grid
+    //column-width : null,     			// by default it's percentage based depending on the context but you can specify a column width yourself
+    gutter-width : $gutter-width,       // size of the gutters -- variable defined in global/varibles
+    // gutter-height : 0,      			// size of top and bottom gutters
+    // gutter-top    : 0,      			// size of top gutter
+    // gutter-bottom : 0,      			// size of bottom gutter
+    // gutter-left   : 10px,   			// size of left gutter
+    // gutter-right  : 10px,   			// size of right gutter
+    // direction : ltr,        			// direction
+    // dir-attribute : false,  			// if need to generate support for dir="rtl" in order to set part of layout direction
+    states-classes : false,    			// if we need to generate the states classes
+    // name-multiplicator : 1, 			// if 5, generate gr-5, gr-10, etc...
+    // classes-prefix : ''     			// the prefix used for all classes 
+));
+
+
+// register special columns
+//5 column grid
+@include gridle_register_column( '1on5' , 1, 5 );
+@include gridle_register_column( '2on5' , 2, 5 );
+@include gridle_register_column( '3on5' , 3, 5 );
+@include gridle_register_column( '4on5' , 4, 5 );
+@include gridle_register_column( '5on5' , 5, 5 );
+
+
+// clear each classes
+@include gridle_register_clear_each(2, left);
+@include gridle_register_clear_each(3, left);
+@include gridle_register_clear_each(12, both);
+
+
+// register states
+// @include gridle_register_default_states();
+// @include gridle_register_state(ipad-landscape, (
+// 	query : "only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)",
+// 	gutter-height : 50px,
+// 	gutter-width : 30px
+// ));
+@include gridle_register_state ( wearable , (
+    max-width : $breakpoint-wearable,
+    gutter-width : $gutter-width/2
+) );
+@include gridle_register_state ( mobile-portrait , (
+	min-width : 321px,
+    max-width : 479px,
+    gutter-width : $gutter-width
+) );
+@include gridle_register_state ( mobile-landscape , (
+    min-width : 480px,
+    max-width : 679px,
+    gutter-width : $gutter-width
+) );
+@include gridle_register_state ( tablet-portrait , (
+    min-width : 680px,
+    max-width : 767px,
+    gutter-width : $gutter-width
+) ) ;
+@include gridle_register_state ( tablet-landscape , (
+    min-width : 768px,
+    max-width : 991px,
+    gutter-width : $gutter-width
+) ) ;
+@include gridle_register_state ( desktop , (
+    min-width : 992px,
+    max-width : $site-width,
+    gutter-width : $gutter-width
+) ) ;
+@include gridle_register_state ( site-width , (
+    min-width : $site-width,
+    gutter-width : $gutter-width
+) ) ;
+
+//Hi Res Breakpoints
+@include gridle_register_state ( wxga , (
+				min-width : 1440px,
+				gutter-width : $gutter-width
+) ) ;
+@include gridle_register_state ( hd , (
+				min-width : 1600px,
+				gutter-width : $gutter-width
+) ) ;
+@include gridle_register_state ( fhd , (
+				min-width : 1920px,
+				gutter-width : $gutter-width
+) ) ;
+@include gridle_register_state ( retina , (
+				min-width : 2048px,
+				gutter-width : $gutter-width
+) ) ;
+
+// you can set css to be applied on the desired element type (grid here)
+// for each of the specified states (default mobile and tablet)
+// this mean that even the grid-tablet-1 will have this css applied
+// in the mobile and default state
+
+// @include gridle_apply_css_for(grid, (
+// 	content : "i m a cool mobile grid"
+// ), tablet);
+
+
+// you can extend the base classes of the framework by using this mixin
+// here, all the grid and flex-grid elements will be extended with the specified
+// css map
+
+// @include gridle_extend_base_class(grid flex-grid, (
+// 	content : "i extend the grid class"
+// ));
+
+// in order to extend only certain states classes, you can specify states like this
+// this will have the effect to apply the css map only on grid-mobile... and grid-tablet... classes
+// @include gridle_extend_base_class(grid, (
+// 	content : "i extend the grid class"
+// ), mobile tablet);

@@ -1,0 +1,155 @@
+.footer-contact-form {
+  background-color: $global-color-gray-3;
+  color: #fff;
+  position: relative;
+  padding-top: $slug-height*.9;
+  padding-bottom: 0;
+  &.stuck {
+    @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+      position: fixed;
+      //bottom: 0;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    .contact-us {
+      &.collapsed {
+        @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+          height: 0;
+          max-height: 0;
+        }
+        .contact-form-toggle {
+          .icon {
+            @include icon-caretup;
+          }
+        }
+      }
+    }
+    .contact-form-toggle {
+      @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+        cursor: pointer;
+        pointer-events: all;
+      }
+      &:hover {
+        @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+          //background-color: $global-color-tertiary;
+          background-color: $global-color-primary;
+        }
+      }
+      .icon {
+        @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .footer-contact-form-container {
+    @include container;
+  }
+  .footer-contact-form-row {
+    @include row;
+  }
+  .contact-us {
+    @include gridle_grid(12);
+    max-height: 682px;
+    overflow: hidden;
+    @include gridle_state(desktop site-width) {
+      max-height: 413px;
+    }
+    //&.collapsed {
+    //  max-height: 0;
+    //  .contact-form-toggle {
+    //    .icon {
+    //      @include icon-caretup;
+    //    }
+    //  }
+    //}
+    > .content {
+      padding-top: $slug-height/4;
+      padding-bottom: $slug-height/2;
+    }
+  }
+  .contact-form-toggle {
+    @extend %button;
+    cursor: default;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    &:hover {
+      background-color: $global-color-gray-3;;
+    }
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    .icon {
+      @include icon-caretdown;
+      opacity: 0;
+    }
+    .label {
+      vertical-align: middle;
+    }
+  }
+  .contact-form {
+    @include row;
+    @extend %contact-form;
+    @include gridle_state(desktop site-width) {
+      @include placeholder() {
+        color: #fff;
+      }
+    }
+    .message-info,
+    .message-submit {
+      @include gridle_grid(12);
+      border: none;
+      margin: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      @include gridle_state(mobile-landscape tablet-portrait tablet-landscape) {
+        max-width: 590px;
+        margin: 0 auto;
+        float: none;
+        display: block;
+      }
+      @include gridle_state(desktop site-width) {
+        @include gridle_grid(6);
+        clear: none;
+      }
+    }
+    label {
+      @include gridle_state(wearable mobile-portrait mobile-landscape tablet-portrait tablet-landscape) {
+        @include remove;
+      }
+    }
+    .name,
+    .email,
+    .subject,
+    .message {
+      border: none;
+      color: $body-text-color;
+      display: block;
+      padding-top: $slug-height/3.75;
+      padding-bottom: $slug-height/3.75;
+      max-width: 570px;
+      width: 100%;
+    }
+    .name {}
+    .email {}
+    .subject {}
+    .message {
+      min-height: 228px;
+      @include gridle_state(wearable mobile-portrait mobile-landscape tablet-portrait tablet-landscape) {
+        margin-top: 0;
+      }
+    }
+    .form-submit {
+      .form-submit-text {}
+      .form-submit-icon {}
+    }
+  }
+}

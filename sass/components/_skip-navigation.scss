@@ -1,0 +1,33 @@
+.skip-navigation {
+  @include sr-only-focusable;
+  font-family: $header-font;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+  display: block;
+  outline: none;
+  padding: 1em;
+  position: fixed;
+  z-index: 999999;
+  top: -999px;
+  right: 0;
+  left: 0;
+  width: 100%;
+  &:focus {
+    top: 0;
+  }
+  &:hover {
+  	color: #fff;
+  }
+  &:before,
+  &:after {
+  	content: "\2193";
+  	display: inline-block;
+  }
+  &:before {
+    margin-right: 1em;
+  }
+  &:after {
+    margin-left: 1em;
+  }
+}

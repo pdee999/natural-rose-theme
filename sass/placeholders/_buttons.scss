@@ -1,0 +1,93 @@
+%button,
+.button {
+    background-color: $global-color-gray-3;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.375em;
+    font-family: $header-font;
+    padding: $slug-height/4 $gutter-width*2.5;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+        background-color: darken($global-color-gray-3, 5%);
+        // border-color: darken($global-color-gray-3, 5%);
+        text-decoration: none;
+    }
+}
+
+%big-button,
+.big-button {
+    font-size: 2.25em;
+    font-size: 10vw;
+    padding: $slug-height/3 $gutter-width*2.5;
+    @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+        font-size: 3em;
+        padding: $slug-height/3 $gutter-width*4;
+    }
+}
+
+//////////////////////////////////////////////////////////////
+// SQUARE BUTTONS
+//////////////////////////////////////////////////////////////
+%button-green-square,
+.button-green-square {
+    @extend %button;
+    background-color: $global-color-secondary;
+    &:hover {
+        background-color: darken($global-color-secondary, 5%);
+        // border-color: darken($global-color-quaternary, 5%);
+    }
+}
+
+%button-red-square,
+.button-red-square {
+    @extend %button;
+    background-color: $global-color-primary;
+    &:hover {
+        background-color: darken($global-color-primary, 5%);
+        // border-color: darken($global-color-quaternary, 5%);
+    }
+}
+
+//////////////////////////////////////////////////////////////
+// GHOST BUTTONS
+//////////////////////////////////////////////////////////////
+
+%ghost-button,
+.ghost-botton {
+    @extend %button;
+    background-color: transparent;
+    border: $gray-border-3;
+    color: $global-color-gray-3;
+    &:hover {
+        background-color: $global-color-gray-3;
+        color: #fff;
+        &:before,
+        &:after {
+            color: #fff;
+        }
+    }
+}
+
+%button-red-ghost,
+.button-red-ghost{
+    @extend %ghost-button;
+    border-color: $global-color-primary;
+    color: $global-color-primary;
+    &:hover {
+        background-color: $global-color-primary;
+    }
+}
+
+%button-green-ghost,
+.button-green-ghost {
+    @extend %ghost-button;
+    border-color: $global-color-secondary;
+    color: $global-color-secondary;
+    &:hover {
+        background-color: $global-color-secondary;
+    }
+}

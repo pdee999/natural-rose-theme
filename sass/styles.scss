@@ -1,0 +1,82 @@
+//This SASS project is not using Compass.
+//@includes here only call mixins found in global/_mixins.scss
+//We are using grunt-sass to compile SASS and grunt-postcss to minify and add required vendor prefixes (see Gruntfile.js)
+
+//Grid System
+//This site is using gridle.scss (http://gridle.org/documentation)
+@import 'global/plugins/_grid-settings';
+
+//Import Fontello Icons
+@import '../../fonts/fontello/css/natural-rose.css',
+        '../../fonts/fontello/css/animation.css',
+        '../../fonts/fontello/css/natural-rose-ie7.css';
+
+//Import Custom Web Font
+@import '../../fonts/chunk-five-roman/stylesheet.css';
+
+//Import Google Fonts
+/*Varela Round*/
+@import "https://fonts.googleapis.com/css?family=Varela+Round";
+
+//Import & Include Normalize
+@import "../libs/normalize.scss/sass/_normalize.scss";
+@include normalize();
+
+//Import Global Variables & Helpers
+@import "global/variables",
+        "global/helpers";
+
+//Import Mixins
+@import "mixins/full-height-columns",
+        "mixins/flexbox",
+        "mixins/css-columns",
+        "mixins/layout",
+        "mixins/content",
+        "mixins/logo",
+        "mixins/_icons",
+        "mixins/_gradients",
+        "mixins/_animations";
+
+//Import Placeholders
+@import "placeholders/buttons",
+        "placeholders/forms",
+        "placeholders/card-grids",
+        "placeholders/card-themes",
+        "placeholders/mention",
+        "placeholders/product",
+        "placeholders/social-menu",
+        "placeholders/contact-form",
+        "placeholders/promos",
+        "placeholders/product-slider";
+
+//Import Slick Carousel
+@import "../libs/slick-carousel/slick/slick.scss",
+        "global/plugins/slick-theme";
+
+//Import Global Styles
+@import "global/html",
+        "global/global";
+
+//Import Component Styles
+@import "components/skip-navigation",
+        "components/site-header",
+        "components/site-footer",
+        "components/site-search",
+        "components/site-navigation",
+        "components/alerts",
+        "components/hero-unit",
+        "components/social-actions",
+        "components/contact-footer",
+        "components/contact-info",
+        "components/about-promo",
+        "components/shop-categories",
+        "components/testimonial-slider",
+        "components/_product-slider-popular.scss",
+        "components/_product-slider-similar.scss";
+
+//Import IE Overrides
+@import "global/ie",
+        "global/overrides";
+
+//Import Print Styles
+@import "global/print";

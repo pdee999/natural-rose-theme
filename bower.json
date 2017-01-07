@@ -1,0 +1,30 @@
+{
+  "name": "starter-package",
+  "version": "0.0.0",
+  "authors": [
+    "P.D. Rittenhouse"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "jquery-migrate": "~1.2.1",
+    "modernizr": "~2.8.3",
+    "waypoints": "^4.0.1",
+    "slick-carousel": "slick.js#^1.6.0",
+    "parallax.js": "^1.4.2"
+  },
+  "devDependencies": {
+    "gridle": "~2.0.44",
+    "normalize.scss": "~4.0.3"
+  }
+}

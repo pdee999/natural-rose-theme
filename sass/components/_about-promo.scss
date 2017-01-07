@@ -1,0 +1,30 @@
+.about-promo {
+  @extend %promo;
+  .testimonial-slider + & {
+    padding-top: 0;
+    .about-promo-row {
+      border-top: 1px solid $global-color-tertiary;
+      padding-top: $slug-height;
+    }
+  }
+  .promo-container {}
+  .promo-row {}
+  .promo-header {
+    > .content {}
+  }
+  .title {}
+  .promo-body {
+    > .content {}
+  }
+  .promo-feature {
+    > .content {}
+  }
+  .feature-image {}
+  .image {
+    img {}
+  }
+  .button {
+    @extend %button-red-square;
+    margin: $slug-height/2 0;
+  }
+}

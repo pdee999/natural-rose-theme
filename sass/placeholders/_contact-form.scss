@@ -1,0 +1,18 @@
+%contact-form {
+  margin: 0;
+  .name {}
+  .email {}
+  .subject {}
+  .message {}
+  .form-submit {
+    @extend %button-red-square;
+    display: block;
+    margin: $gutter-width/2 auto;
+    max-width: 330px;
+    width: 100%;
+    .form-submit-text {
+      vertical-align: middle;
+    }
+    .form-submit-icon {}
+  }
+}

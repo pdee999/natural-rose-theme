@@ -1,0 +1,297 @@
+.hero-unit {
+  @include gradient-horizontal-white-transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff;
+  @include gridle_state(tablet-landscape desktop site-width) {
+    min-height: 550px;
+    overflow: hidden;
+  }
+  .hero-unit-container {
+    @include container;
+  }
+  .hero-unit-row {
+    @include gridle_row;
+  }
+  .hero-unit-body {
+    @include gridle_grid(12);
+    @include gridle_state(tablet-landscape desktop) {
+      @include gridle_grid(9);
+    }
+    @include gridle_state(site-width) {
+      @include gridle_grid(6);
+    }
+    > .content {}
+  }
+  .hero-header {}
+  .title {
+    color: $global-color-tertiary;
+    margin: 0 0 $slug-height/4;
+  }
+  .intro,
+  .details {
+    font-size: 1.125em;
+    @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+      font-size: 1.5em;
+    }
+  }
+  .intro {}
+  .details {}
+  .price {
+    font-weight: bold;
+  }
+  .quantity {}
+  .button-wrapper {
+    margin-bottom: 0;
+  }
+  .button {
+    @extend %button-red-square;
+  }
+  .slick {
+    @include remove;
+  }
+
+  &.has-feature {
+    .hero-unit-body {
+      margin-bottom: $slug-height/2;
+      @include gridle_state(tablet-landscape desktop) {
+        @include gridle_grid(8);
+        margin-bototm: 0;
+      }
+      > .content {}
+    }
+    .hero-feature {
+      @include gridle_grid(12);
+      visibility: visible;
+      z-index: 1;
+      @include gridle_state(tablet-landscape desktop) {
+        @include gridle_grid(4);
+      }
+      @include gridle_state(site-width) {
+        @include gridle_grid(6);
+      }
+      &.slick {
+        margin-bottom: $slug-height/3;
+        @include gridle_state(tablet-landscape desktop site-width) {
+          margin-bottom: 0;
+        }
+      }
+      > .content {}
+      .feature-image {}
+      .image {
+        display: block;
+        img {
+          display: block;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .home & {
+    .hero-unit-body {
+      @include gridle_state(tablet-landscape desktop) {
+        @include gridle_grid(10);
+      }
+      @include gridle_state(site-width) {
+        @include gridle_grid(8);
+      }
+      > .content {}
+    }
+    .hero-header {}
+    .title {
+      font-size: 6.25em;
+    }
+    .intro,
+    .details {
+      font-size: 1.5em;
+      @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+        font-size: 2em;
+      }
+    }
+    .intro {}
+    .details {}
+    .price {}
+    .quantity {}
+    .button-wrapper {}
+    .button {}
+  }
+
+  &.parallax {
+    .parallax-active & {
+      background-image: none !important;
+      background-color: transparent !important;
+      min-height: 400px;
+    }
+  }
+
+  &.slider,
+  &.bg-slider {
+    .hero-unit-row {}
+    .hero-unit-body {
+      //margin-bottom: $slug-height/2;
+      pointer-events: none;
+      z-index: 1;
+      @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+        padding-left: $gutter-width*3.5;
+      }
+      @include gridle_state(tablet-portrait) {
+        padding-right: $gutter-width*3.5;
+      }
+      @include gridle_state(tablet-landscape desktop site-width) {
+        //margin-bottom: 0;
+      }
+      @include gridle_state(tablet-landscape desktop site-width) {
+        padding-right: 0;
+      }
+      @include gridle_state(wxga) {
+        padding-left: 0;
+      }
+      > .content {}
+      a {
+        pointer-events: all;
+      }
+    }
+    .hero-header {}
+    .title {}
+    .intro,
+    .details {}
+    .intro {}
+    .details {}
+    .price {}
+    .quantity {}
+    .button-wrapper {}
+    .button {
+      pointer-events: all;
+    }
+    .hero-unit-background {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin-bottom: 0;
+      visibility: visible;
+      .slick-list,
+      .slick-track {
+        height: 100%;
+      }
+      .slick-list {}
+      .slick-track {
+        height: 100%;
+      }
+      .slide {
+        @include transparent-color-overlay(#fff, .70);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        @include gridle_state(tablet-landscape desktop site-width) {
+          @include gradient-horizontal-white-transparent;
+        }
+      }
+    }
+    .home & {
+      .hero-unit-body {
+        > .content {}
+      }
+      .hero-header {}
+      .title {}
+      .intro,
+      .details {}
+      .intro {}
+      .details {}
+      .price {}
+      .quantity {}
+      .button-wrapper {}
+      .button {}
+    }
+  }
+
+  &.slider {
+    //padding: 0;
+    .hero-unit-row {}
+    .slick {
+      //@include gridle_grid(12);
+      .slick-list,
+      .slick-track {}
+      .slick-list {}
+      .slick-track {}
+      .slide {
+        //@include row;
+        //padding: $slug-height 0;
+      }
+    }
+    .hero-unit-body {
+      display: block;
+      visibility: visible;
+      > .content {
+        @include clearfix;
+      }
+      .slick-list {}
+      .slick-track {}
+      .slide {}
+    }
+    .hero-header {}
+    .title {}
+    .intro,
+    .details {}
+    .intro {}
+    .details {}
+    .price {}
+    .quantity {}
+    .button-wrapper {}
+    .button {}
+    .home & {
+      .hero-unit-body {
+        > .content {}
+      }
+      .hero-header {}
+      .title {}
+      .intro,
+      .details {}
+      .intro {}
+      .details {}
+      .price {}
+      .quantity {}
+      .button-wrapper {}
+      .button {}
+    }
+  }
+
+  &.bg-slider {
+    .hero-unit-row {}
+    .hero-unit-body {
+      > .content {}
+    }
+    .hero-header {}
+    .title {}
+    .intro,
+    .details {}
+    .intro {}
+    .details {}
+    .price {}
+    .quantity {}
+    .button-wrapper {}
+    .button {}
+    .hero-unit-background {
+      .slick-list {}
+      .slick-track {}
+      .slide {}
+    }
+    .home & {
+      .hero-unit-body {
+        > .content {}
+      }
+      .title {}
+      .intro,
+      .details {}
+      .intro {}
+      .details {}
+      .price {}
+      .quantity {}
+      .button {}
+    }
+  }
+}

@@ -1,0 +1,52 @@
+//Site Logo - remove background-image, text-indent, width, max-width and height if using image file for logo
+
+@mixin site-logo {
+  background-image: $site-logo-1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+  width: 100%;
+  max-width: 680px;
+  height: 30px;
+  text-indent: -9999px;
+  overflow: hidden;
+  margin: 0 auto;
+  display: block;
+  @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+    background-position: 0 50%;
+    height: 45px;
+  }
+}
+
+@mixin site-logo-alt {
+  background-image: $site-logo-2;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+  width: 100%;
+  max-width: 320px;
+  height: 100px;
+  text-indent: -9999px;
+  overflow: hidden;
+  margin: 0 auto;
+  display: block;
+  @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
+    max-width: 480px;
+    height: 155px;
+  }
+}
+
+
+@mixin site-logo-icon {
+  background-image: $site-logo-3;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+  width: 100%;
+  max-width: 110px;
+  height: 125px;
+  text-indent: -9999px;
+  overflow: hidden;
+  margin: 0 auto;
+  display: block;
+}
