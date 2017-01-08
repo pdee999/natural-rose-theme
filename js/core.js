@@ -1,25 +1,32 @@
-//Global Variables
+//Natural Rose Global Object
 var $naturalrose = {
+	body: $('body'),
+	contactFormWrapper: $('#footer-contact-form'),
+	contactForm: $('#contact-us'),
+	toggleButton: $('#contact-form-toggle'),
+	toggleHeight: function() {
+		return this.toggleButton.outerHeight();
+	},
+	viewportHeight: $(window).height(),
 	initForm: function() {
-		var $contactForm = $('#footer-contact-form'),
-			$toggleButton = $('#contact-form-toggle'),
-			$toggleHeight = $toggleButton.outerHeight(),
-			$viewportHeight = $(window).height();
-		setTimeout(function() {
-			var $scrollPosition = $(window).scrollTop(),
-				$formHeight = $contactForm.outerHeight(),
-				$totalFormHeight = $formHeight - $toggleHeight,
-				$footerHeight = $('#site-footer').outerHeight(),
-				$documentHeight = $(document).height();
-			// console.log($documentHeight);
-			// console.log($scrollPosition + $viewportHeight);
-			// console.log(($documentHeight - $formHeight - $footerHeight) + $toggleHeight);
-			if (($scrollPosition + $viewportHeight) < (($documentHeight - $formHeight - $footerHeight) + $toggleHeight) ) {
-				setTimeout(function() {
-					$contactForm.addClass('stuck');
-				}, 1);
-			}
-		}, 1);
+		var $scrollPosition = $(window).scrollTop(),
+			$formHeight = $naturalrose.contactFormWrapper.outerHeight(),
+			$totalFormHeight = $formHeight - this.toggleHeight,
+			$footerHeight = $('#site-footer').outerHeight(),
+			$documentHeight = $(document).height();
+		// console.log($documentHeight);
+		// console.log($scrollPosition + $viewportHeight);
+		// console.log(($documentHeight - $formHeight - $footerHeight) + $toggleHeight);
+		// console.log($scrollPosition + $naturalrose.viewportHeight);
+		// console.log(($documentHeight - $formHeight - $footerHeight) + $naturalrose.toggleHeight());
+		if (($scrollPosition + $naturalrose.viewportHeight) < ($documentHeight - $formHeight - $footerHeight + $naturalrose.toggleHeight()) ) {
+			$naturalrose.contactFormWrapper.addClass('stuck');
+		}
+	},
+	reInitForm: function() {
+		$naturalrose.contactFormWrapper.removeClass('stuck');
+		Waypoint.refreshAll();
+		$naturalrose.initForm();
 	}
 };
 

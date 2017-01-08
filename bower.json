@@ -16,12 +16,12 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4",
     "jquery-migrate": "~1.2.1",
     "modernizr": "~2.8.3",
     "waypoints": "^4.0.1",
     "slick-carousel": "slick.js#^1.6.0",
-    "parallax.js": "^1.4.2"
+    "parallax.js": "^1.4.2",
+    "jquery": "^3.1.1"
   },
   "devDependencies": {
     "gridle": "~2.0.44",

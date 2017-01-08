@@ -1,11 +1,10 @@
 jQuery(document).ready(function($) {
 
     //Parallax
-    var $heroParallax = function() {
-        var $body = $('body'),
-            $heroUnitParallax = $('.hero-unit.parallax').not('.slider, .bg-slider');
+    $naturalrose.heroParallax = function() {
+        var $heroUnitParallax = $('.hero-unit.parallax').not('.slider, .bg-slider');
         if ($heroUnitParallax.length) {
-            $body.addClass('parallax-active');
+            $naturalrose.body.addClass('parallax-active');
             $.each($heroUnitParallax, function() {
                 var $bgImage = $(this).data('parallaxImage');
                 $(this).parallax({
@@ -14,14 +13,20 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $heroParallax();
+    $naturalrose.heroParallax();
 
     //Background image carousel
-    var $heroBackgroundCarousel = function() {
+    $naturalrose.heroBackgroundCarousel = function() {
         var $heroBackgroundSlider = $('.hero-unit.bg-slider');
         if ($heroBackgroundSlider.length) {
             $.each($heroBackgroundSlider, function() {
-                $(this).find('.hero-unit-background.slick').slick({
+                var $slider = $(this).find('.hero-unit-background.slick');
+                // Reinitialize waypoints
+                $slider.on('init reInit', function(event, slick, currentSlide){
+                    $naturalrose.reInitForm();
+                });
+                // Initialize Slider
+                $slider.slick({
                     // accessibility: ,
                     // adaptiveHeight: false,
                     // autoplay: false,
@@ -111,10 +116,10 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $heroBackgroundCarousel();
+    $naturalrose.heroBackgroundCarousel();
 
     //Content and background image carousel
-    var $heroCarousel = function() {
+    $naturalrose.heroCarousel = function() {
         var $heroSlider = $('.hero-unit.slider');
         if ($heroSlider.length) {
             $.each($heroSlider, function() {
@@ -123,6 +128,11 @@ jQuery(document).ready(function($) {
                 //Content slider
                 if ($heroBodySlider.length) {
                     $.each($heroBodySlider, function() {
+                        // Reinitialize waypoints
+                        $(this).on('afterChange init reInit', function(event, slick, currentSlide){
+                            $naturalrose.reInitForm();
+                        });
+                        // Initialize Slider
                         $(this).slick({
                             // accessibility: ,
                             adaptiveHeight: true,
@@ -201,18 +211,17 @@ jQuery(document).ready(function($) {
                             // waitForAnimate: ,
                             // zIndex: ,
                         });
-                        // Reinitialize waypoints
-                        $(this).on('afterChange', function(event, slick, currentSlide){
-                            $contactForm.removeClass('stuck');
-                            Waypoint.refreshAll();
-                            $initializeForm();
-                        });
                     });
                 }
 
                 //Background slider
                 if ($heroBackgroundSlider.length) {
                     $.each($heroBackgroundSlider, function() {
+                        // Reinitialize waypoints
+                        $(this).on('init reInit', function(event, slick, currentSlide){
+                            $naturalrose.reInitForm();
+                        });
+                        // Initialize Slider
                         $(this).slick({
                             // accessibility: ,
                             adaptiveHeight: false,
@@ -305,13 +314,18 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $heroCarousel();
+    $naturalrose.heroCarousel();
 
     //Feature Carousel
-    var $heroFeatureCarousel = function() {
+    $naturalrose.heroFeatureCarousel = function() {
         var $featureCarousel = $('.hero-unit .hero-feature.slick');
         if ($featureCarousel.length) {
             $.each($featureCarousel, function() {
+                // Reinitialize waypoints
+                $(this).on('init reInit', function(event, slick, currentSlide){
+                    $naturalrose.reInitForm();
+                });
+                // Initialize Slider
                 $(this).slick({
                     // accessibility: ,
                     // adaptiveHeight: false,
@@ -402,6 +416,6 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $heroFeatureCarousel();
+    $naturalrose.heroFeatureCarousel();
 
 });

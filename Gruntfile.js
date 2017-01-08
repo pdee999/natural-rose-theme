@@ -1,8 +1,33 @@
 module.exports = function(grunt) {
 
+    var webpack = require("webpack");
+    var webpackConfig = require("./webpack.config.js");
+
     // 1. All configuration goes here 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+
+        webpack: {
+            options: webpackConfig,
+            dist: {
+                // configuration for this build
+            }
+        },
+
+        "webpack-dev-server": {
+            options: {
+                webpack: {
+                    // configuration for all builds
+                },
+                // server and middleware options for all builds
+            },
+            start: {
+                webpack: {
+                    // configuration for this build
+                },
+                // server and middleware options for this build
+            }
+        },
 
         sass: { // Task
             dist: { // Target
@@ -283,7 +308,7 @@ module.exports = function(grunt) {
             options: {
                 reload: false,
                 spawn: false,
-                interrupt: true,
+                interrupt: false,
                 livereload: true
             },
             config: {
@@ -324,6 +349,7 @@ module.exports = function(grunt) {
     });
 
     // 3. Where we tell Grunt we plan to use this plug-in.
+    grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks('grunt-bowercopy');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-csssplit');

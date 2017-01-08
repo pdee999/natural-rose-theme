@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-    var $stickyHeader = function() {
+    $naturalrose.stickyHeader = function() {
         var $siteHeader = $('.site-header');
         if ($siteHeader.length) {
             var sticky = new Waypoint.Sticky({
@@ -9,6 +9,6 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $stickyHeader();
+    $naturalrose.stickyHeader();
 
 });

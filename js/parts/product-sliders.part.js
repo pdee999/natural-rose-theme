@@ -1,9 +1,14 @@
 jQuery(document).ready(function($) {
 
-    var $popularSlider = function() {
+    $naturalrose.popularSlider = function() {
         var $productSlider = $('.product-slider-popular .slick');
         if ($productSlider.length) {
             $.each($productSlider, function() {
+                // Reinitialize waypoints
+                $(this).on('init reInit', function(event, slick, currentSlide){
+                    $naturalrose.reInitForm();
+                });
+                // Initialize Waypoints
                 $(this).slick({
                     // accessibility: ,
                     adaptiveHeight: true,
@@ -101,12 +106,17 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $popularSlider();
+    $naturalrose.popularSlider();
 
-    var $similarSlider = function() {
+    $naturalrose.similarSlider = function() {
         var $productSlider = $('.product-slider-similar .slick');
         if ($productSlider.length) {
             $.each($productSlider, function() {
+                // Reinitialize waypoints
+                $(this).on('init reInit', function(event, slick, currentSlide){
+                    $naturalrose.reInitForm();
+                });
+                // Initialize Waypoints
                 $(this).slick({
                     // accessibility: ,
                     adaptiveHeight: true,
@@ -204,6 +214,6 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $similarSlider();
+    $naturalrose.similarSlider();
 
 });

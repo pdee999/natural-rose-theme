@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-    var $toggleNav = function() {
+    $naturalrose.toggleNav = function() {
         var $toggleButton = $('#navbar-toggle'),
             $navMenu = $('#navbar-collapse');
 
@@ -15,6 +15,6 @@ jQuery(document).ready(function($) {
         }
 
     };
-    $toggleNav();
+    $naturalrose.toggleNav();
 
 });

@@ -4,7 +4,7 @@
 
 //Grid System
 //This site is using gridle.scss (http://gridle.org/documentation)
-@import 'global/plugins/_grid-settings';
+@import 'global/packages/_grid-settings';
 
 //Import Fontello Icons
 @import '../../fonts/fontello/css/natural-rose.css',
@@ -51,7 +51,7 @@
 
 //Import Slick Carousel
 @import "../libs/slick-carousel/slick/slick.scss",
-        "global/plugins/slick-theme";
+        "global/packages/slick-theme";
 
 //Import Global Styles
 @import "global/html",

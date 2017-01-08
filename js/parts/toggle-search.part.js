@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-    var $toggleSearch = function() {
+    $naturalrose.toggleSearch = function() {
         var $toggleButton = $('#search-toggle'),
             $searchBar = $('#search');
 
@@ -14,6 +14,6 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $toggleSearch();
+    $naturalrose.toggleSearch();
 
 });

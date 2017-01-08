@@ -1,10 +1,16 @@
 jQuery(document).ready(function($) {
 
-    var $testimonialSlider = function() {
+    $naturalrose.testimonialSlider = function() {
         var $slider = $('.testimonial-slider');
         if ($slider.length) {
             $.each($slider, function() {
-                $(this).find('.mention-list.slick').slick({
+                var $slider = $(this).find('.mention-list.slick');
+                // Reinitialize waypoints
+                $slider.on('init', function(event, slick, currentSlide){
+                    $naturalrose.reInitForm();
+                });
+                // Initialize Waypoints
+                $slider.slick({
                     // accessibility: ,
                     adaptiveHeight: false,
                     autoplay: true,
@@ -94,6 +100,6 @@ jQuery(document).ready(function($) {
             });
         }
     };
-    $testimonialSlider();
+    $naturalrose.testimonialSlider();
 
 });

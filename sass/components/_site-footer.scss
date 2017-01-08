@@ -216,6 +216,7 @@
       .social-menu {
         @include gridle_grid(12);
         @extend %social-menu;
+        padding: 0 $gutter-width/2;
         .nav-item {
           font-size: 1.5em;
           .content {}
