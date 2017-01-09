@@ -1,19 +1,11 @@
-jQuery(document).ready(function($) {
-
-    $naturalrose.toggleSearch = function() {
-        var $toggleButton = $('#search-toggle'),
-            $searchBar = $('#search');
-
-        if ($searchBar.length) {
-            //Collapse Search
-            $searchBar.addClass('collapsed');
-
-            //Toggle search when button clicked
-            $toggleButton.on('click', function () {
-                $searchBar.toggleClass('collapsed');
-            });
-        }
-    };
-    $naturalrose.toggleSearch();
-
-});
+//Toggle Search
+$naturalrose.searchBar = $('#search');
+$naturalrose.toggleSearch = function() {
+    var $searchToggleButton = $('#search-toggle');
+    //Collapse Search
+    $naturalrose.searchBar.addClass('collapsed');
+    //Toggle search when button clicked
+    $searchToggleButton.on('click', function () {
+        $naturalrose.searchBar.toggleClass('collapsed');
+    });
+};

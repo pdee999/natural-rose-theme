@@ -1,20 +1,12 @@
-jQuery(document).ready(function($) {
+//Toggle Navigation
+$naturalrose.navMenu = $('#navbar-collapse');
+$naturalrose.toggleNav = function() {
+    var $toggleButton = $('#navbar-toggle');
+    //Collapse Menu
+    $naturalrose.navMenu.addClass('collapsed');
 
-    $naturalrose.toggleNav = function() {
-        var $toggleButton = $('#navbar-toggle'),
-            $navMenu = $('#navbar-collapse');
-
-        if ($navMenu.length) {
-            //Collapse Menu
-            $navMenu.addClass('collapsed');
-
-            //Toggle menu when button clicked
-            $toggleButton.on('click', function () {
-                $navMenu.toggleClass('collapsed');
-            });
-        }
-
-    };
-    $naturalrose.toggleNav();
-
-});
+    //Toggle menu when button clicked
+    $toggleButton.on('click', function () {
+        $naturalrose.navMenu.toggleClass('collapsed');
+    });
+};
