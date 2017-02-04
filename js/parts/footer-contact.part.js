@@ -1,61 +1,65 @@
-$naturalrose.prefooterContactForm = function() {
-    //Sticky form waypoint
-    var $stickyContactForm = function() {
+var prefooterContactForm = function() {
 
-        var $offset = $naturalrose.viewportHeight - $naturalrose.contactToggleHeight();
-        //console.log($toggleHeight);
-        // console.log($offset);
-        // console.log($(window).scrollTop() + $viewportHeight);
+    if (this.contactFormWrapper.length) {
+        var $naturalrose = this;
+        //Sticky form waypoint
+        var stickyContactForm = function() {
 
-        var waypoint = new Waypoint({
-            element: document.getElementById('footer-contact-form'),
-            handler: function(direction) {
-                if(direction === 'down') {
-                    //console.log('down waypoint hit: $scrollPosition + $viewportHeight');
-                    if (document.getElementById('contact-us').classList.contains('collapsed')) {
-                    } else {
-                        document.getElementById('contact-us').classList.add('collapsed');
+            var offset = $naturalrose.viewportHeight - $naturalrose.contactToggleHeight();
+
+            var waypoint = new Waypoint({
+                element: $naturalrose.contactFormWrapper,
+                handler: function(direction) {
+                    if(direction === 'down') {
+                        //console.log('down waypoint hit: $scrollPosition + $viewportHeight');
+                        if ($naturalrose.contactForm.hasClass('collapsed')) {
+                        } else {
+                            $naturalrose.contactForm.addClass('collapsed');
+                        }
+                        if (this.element.hasClass('stuck')) {
+                            this.element.removeClass('stuck');
+                        }
+                    } else if(direction === 'up') {
+                        //console.log('up waypoint hit: $scrollPosition + $viewportHeight');
+                        if (this.element.hasClass('stuck')) {
+                        } else {
+                            this.element.addClass('stuck');
+                        }
                     }
-                    if (this.element.classList.contains('stuck')) {
-                        this.element.classList.remove('stuck');
-                    }
-                } else if(direction === 'up') {
-                    //console.log('up waypoint hit: $scrollPosition + $viewportHeight');
-                    if (this.element.classList.contains('stuck')) {
-                    } else {
-                        this.element.classList.add('stuck');
-                    }
-                }
-            },
-            offset: $offset
-        });
+                },
+                offset: offset
+            });
 
-        $naturalrose.initForm();
+            $naturalrose.initForm();
 
-        //Reinitialize on window resize
-        $(window).resize(function() {
-            $naturalrose.reInitForm();
-        });
+            //Reinitialize on window resize
+            $(window).resize(function() {
+                $naturalrose.reInitForm();
+            });
 
-        //Debug function
-        // $(window).scroll(function() {
-        //     $initializeForm();
-        // });
+            //Debug function
+            // $(window).scroll(function() {
+            //     $initializeForm();
+            // });
 
-    };
-    $stickyContactForm();
+        };
+        stickyContactForm();
 
-    //Form toggle
-    var $toggleFooterContact = function() {
-        //var $contactForm = $('#contact-us');
+        //Form toggle
+        var toggleFooterContact = function() {
+            //var $contactForm = $('#contact-us');
 
-        //Collapse Form
-        $naturalrose.contactForm.addClass('collapsed');
+            //Collapse Form
+            $naturalrose.contactForm.addClass('collapsed');
 
-        //Toggle form when button clicked
-        $naturalrose.contactToggleButton.on('click', function () {
-            $naturalrose.contactForm.toggleClass('collapsed');
-        });
-    };
-    $toggleFooterContact();
+            //Toggle form when button clicked
+            $naturalrose.contactToggleButton.on('click', function () {
+                $naturalrose.contactForm.toggleClass('collapsed');
+            });
+        };
+        toggleFooterContact();
+    }
+
 };
+
+module.exports = prefooterContactForm;

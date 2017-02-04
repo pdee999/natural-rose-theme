@@ -1,3 +1,6 @@
+//Include CSS
+require('../sass/core.scss');
+
 //Natural Rose Global Object
 var $naturalrose = {
 	body: $('body'),
@@ -9,104 +12,99 @@ var $naturalrose = {
 	},
 	viewportHeight: $(window).height(),
 	initForm: function() {
-		var $scrollPosition = $(window).scrollTop(),
-			$formHeight = $naturalrose.contactFormWrapper.outerHeight(),
-			$totalFormHeight = $formHeight - this.contactToggleHeight,
-			$footerHeight = $('#site-footer').outerHeight(),
-			$documentHeight = $(document).height();
-		// console.log($documentHeight);
-		// console.log($scrollPosition + $viewportHeight);
-		// console.log(($documentHeight - $formHeight - $footerHeight) + $toggleHeight);
-		// console.log($scrollPosition + $naturalrose.viewportHeight);
-		// console.log(($documentHeight - $formHeight - $footerHeight) + $naturalrose.contactToggleHeight());
-		if (($scrollPosition + $naturalrose.viewportHeight) < ($documentHeight - $formHeight - $footerHeight + $naturalrose.contactToggleHeight()) ) {
-			$naturalrose.contactFormWrapper.addClass('stuck');
+		var scrollPosition = $(window).scrollTop(),
+			formHeight = this.contactFormWrapper.outerHeight(),
+			footerHeight = $('#site-footer').outerHeight(),
+			documentHeight = $(document).height();
+		if ((scrollPosition + this.viewportHeight) < (documentHeight - formHeight - footerHeight + this.contactToggleHeight()) ) {
+			this.contactFormWrapper.addClass('stuck');
 		}
-	},
-	reInitForm: function() {
-		$naturalrose.contactFormWrapper.removeClass('stuck');
-		Waypoint.refreshAll();
-		$naturalrose.initForm();
 	},
 	sliders: $('.slick'),
+	reInitForm: function() {
+		this.contactFormWrapper.removeClass('stuck');
+		Waypoint.refreshAll();
+		this.initForm();
+	},
 	afterSliderInitChange: function () {
 		// Reinitialize contact form after sliders initialize
-		$.each($naturalrose.sliders, function () {
-			$(this).on('afterChange init reInit', function(event, slick, currentSlide){
-				$naturalrose.reInitForm();
+		if (this.sliders.length) {
+			$.each(this.sliders, function () {
+				$(this).on('afterChange init reInit', function(event, slick, currentSlide){
+					$naturalrose.reInitForm();
+				});
 			});
-		});
-	}
+		}
+	},
+	siteHeader: $('.site-header'),
+	stickyHeader: require('./parts/sticky-header.part'),
+	stickyFooter: $('#site-footer.sticky-footer'),
+	stickFooter: require('./parts/sticky-footer.part'),
+	navMenu: $('#navbar-collapse'),
+	toggleNav: require('./parts/toggle-top-nav.part'),
+	searchBar: $('#search'),
+	toggleSearch: require('./parts/toggle-search.part'),
+	prefooterContactForm: require('./parts/footer-contact.part'),
+	heroUnitParallax: $('.hero-unit.parallax').not('.slider, .bg-slider'),
+	heroParallax: require('./parts/hero-unit-parallax.part'),
+	heroBackgroundSlider: $('.hero-unit.bg-slider'),
+	heroBackgroundCarousel: require('./parts/hero-unit-background.part'),
+	heroSlider: $('.hero-unit.slider'),
+	heroCarousel: require('./parts/hero-unit.part'),
+	featureCarousel: $('.hero-unit .hero-feature.slick'),
+	heroFeatureCarousel: require('./parts/hero-unit-feature.part'),
+	quoteSlider: $('.testimonial-slider'),
+	testimonialSlider: require('./parts/testimonial-slider.part'),
+	productSliderPopular: $('.product-slider-popular .slick'),
+	popularSlider: require('./parts/product-slider-popular.part'),
+	productSliderSimilar: $('.product-slider-similar .slick'),
+	similarSlider: require('./parts/product-slider-similar.part')
 };
 
-//Document Ready
-(function($){//Begin No Conflict
-	$(document).ready(function() {//Begin Document Ready
+
+//Begin No Conflict
+(function($){
+	//Begin Document Ready
+	$(document).ready(function() {
 
 		//Sticky Header
-		if ($naturalrose.siteHeader.length) {
-			$naturalrose.stickyHeader();
-		}
+		$naturalrose.stickyHeader();
 
 		// Sticky Footer
-		if ($naturalrose.stickyFooter.length) {
-			$naturalrose.stickFooter();
-		}
+		$naturalrose.stickFooter();
 
 		//Toggle Navigation
-		if ($naturalrose.navMenu.length) {
-			$naturalrose.toggleNav();
-		}
+		$naturalrose.toggleNav();
 
 		//Toggle Search
-		if ($naturalrose.searchBar.length) {
-			$naturalrose.toggleSearch();
-		}
+		$naturalrose.toggleSearch();
 
 		//Prefooter Contact Form
-		if ($naturalrose.contactFormWrapper.length) {
-			$naturalrose.prefooterContactForm();
-		}
+		$naturalrose.prefooterContactForm();
 
 		//Reinit footer comment form after slider init, reinit or change
-		if ($naturalrose.sliders.length) {
-			$naturalrose.afterSliderInitChange();
-		}
+		$naturalrose.afterSliderInitChange();
 
 		// Hero Unit: Parallax
-		if ($naturalrose.heroUnitParallax.length) {
-			$naturalrose.heroParallax();
-		}
+		$naturalrose.heroParallax();
 
 		// Hero Unit: Background image carousel
-		if ($naturalrose.heroBackgroundSlider.length) {
-			$naturalrose.heroBackgroundCarousel();
-		}
+		$naturalrose.heroBackgroundCarousel();
 
 		// Hero Unit: Content and background image carousel
-		if ($naturalrose.heroSlider.length) {
-			$naturalrose.heroCarousel();
-		}
+		$naturalrose.heroCarousel();
 
 		// Hero Unit: Feature Carousel
-		if ($naturalrose.featureCarousel.length) {
-			$naturalrose.heroFeatureCarousel();
-		}
+		$naturalrose.heroFeatureCarousel();
 
 		//Testimonial Slider
-		if ($naturalrose.quoteSlider.length) {
-			$naturalrose.testimonialSlider();
-		}
+		$naturalrose.testimonialSlider();
 
 		//Product Slider: Popular
-		if ($naturalrose.productSliderPopular.length) {
-			$naturalrose.popularSlider();
-		}
+		$naturalrose.popularSlider();
 
 		//Product Slider: Similar
-		if ($naturalrose.productSliderSimilar.length) {
-			$naturalrose.similarSlider();
-		}
+		$naturalrose.similarSlider();
 
 
 	});//End Document Ready

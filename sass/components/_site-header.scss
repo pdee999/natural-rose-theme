@@ -29,7 +29,8 @@
   }
   &.stuck {
     @include gridle_state(tablet-landscape desktop site-width) {
-      box-shadow: 0px 0px 10px 0px rgba(125, 125, 125, 0.85);
+      background-color: rgba(255,255,255,.95);
+      box-shadow: $default-shadow;
       padding: $slug-height/3 0;
       position: fixed;
       left: 0;

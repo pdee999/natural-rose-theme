@@ -2,6 +2,9 @@
 #################
 .idea
 node_modules/**/**
+bundle/**/**
+.sass-cache/**/**
+.uglify-cache/**/**
 
 # Compiled source #
 ###################

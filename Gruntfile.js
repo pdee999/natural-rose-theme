@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
 
-    var webpack = require("webpack");
     var webpackConfig = require("./webpack.config.js");
 
     // 1. All configuration goes here 
@@ -92,44 +91,44 @@ module.exports = function(grunt) {
             }
         },
 
-        jshint: {
-            options: {
-                globals: {
-                    jQuery: true,
-                    console: true,
-                    module: true,
-                    document: true
-                },
-                ignores: [
-                    'js/*.min.js',      //ignore minified js
-                    'js/*.min.js.map'   //ignore js source maps
-                ],
-                reporter: require('jshint-stylish')
-            },
-            dist: [//targeting the pre uglified files
-                'Gruntfile.js',
-                'js/**/*.js'
-            ]
-        },
-
-        uglify: {
-            options: {
-                sourceMap : true,
-                banner: '/*\n' + // 6
-                ' * ' + '<%= pkg.name %>\n' + // 7
-                ' * ' + 'v<%= pkg.version %>\n' + // 8
-                ' * ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + // 9
-                ' **/\n'
-            },
-            dist: {
-                files: {
-                    'js/core.min.js': [
-                        'js/core.js',
-                        'js/parts/**/*.js'
-                    ]
-                }
-            }
-        },
+        // jshint: {
+        //     options: {
+        //         globals: {
+        //             jQuery: true,
+        //             console: true,
+        //             module: true,
+        //             document: true
+        //         },
+        //         ignores: [
+        //             'js/*.min.js',      //ignore minified js
+        //             'js/*.min.js.map'   //ignore js source maps
+        //         ],
+        //         reporter: require('jshint-stylish')
+        //     },
+        //     dist: [//targeting the pre uglified files
+        //         'Gruntfile.js',
+        //         'js/**/*.js'
+        //     ]
+        // },
+        //
+        // uglify: {
+        //     options: {
+        //         sourceMap : true,
+        //         banner: '/*\n' + // 6
+        //         ' * ' + '<%= pkg.name %>\n' + // 7
+        //         ' * ' + 'v<%= pkg.version %>\n' + // 8
+        //         ' * ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + // 9
+        //         ' **/\n'
+        //     },
+        //     dist: {
+        //         files: {
+        //             'js/core.min.js': [
+        //                 'js/core.js',
+        //                 'js/parts/**/*.js'
+        //             ]
+        //         }
+        //     }
+        // },
 
         // imagemin: { // Task
         //     dynamic: { // Target
@@ -316,34 +315,46 @@ module.exports = function(grunt) {
                     'Gruntfile.js',
                     'package.json',
                     'bower.json',
-                    '.bowerrc'
+                    '.bowerrc',
+                    'webpack.config.js'
                  ],
                 tasks: [
                     'default'
                 ]
             },
-            scripts: {
+            dist: {
                 files: [
                     'js/**/*.js',
                     '!js/*.min.js',         // Don't watch minified js
-                    '!js/*.min.js.map'     // Don't watch js source maps
-                ],
-                tasks: [
-                    'jshint',
-                    'uglify'
-                ]
-            },
-            styles: {
-                files: [
+                    '!js/*.min.js.map',     // Don't watch js source maps
                     'sass/**/*.scss'
                 ],
-                tasks: [
-                    'sass',
-                    'csssplit',
-                    'file-creator',
-                    'postcss'
+                    tasks: [
+                        'webpack'
                 ]
-            }
+            },
+            // scripts: {
+            //     files: [
+            //         'js/**/*.js',
+            //         '!js/*.min.js',         // Don't watch minified js
+            //         '!js/*.min.js.map'     // Don't watch js source maps
+            //     ],
+            //     tasks: [
+            //         'jshint',
+            //         'uglify'
+            //     ]
+            // },
+            // styles: {
+            //     files: [
+            //         'sass/**/*.scss'
+            //     ],
+            //     tasks: [
+            //         'sass',
+            //         'csssplit',
+            //         'file-creator',
+            //         'postcss'
+            //     ]
+            // }
         }
 
     });
@@ -355,14 +366,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-csssplit');
     grunt.loadNpmTasks('grunt-file-creator');
     grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-newer');
+    // grunt.loadNpmTasks('grunt-contrib-jshint');
+    // grunt.loadNpmTasks('grunt-contrib-uglify');
+    // grunt.loadNpmTasks('grunt-newer');
     //grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     //grunt.registerTask('default', ['bowercopy', 'sass', 'csssplit', 'file-creator', 'postcss', 'jshint', 'uglify', 'newer:imagemin']);
-    grunt.registerTask('default', ['bowercopy', 'sass', 'csssplit', 'file-creator', 'postcss', 'jshint', 'uglify']);
+    // grunt.registerTask('default', ['bowercopy', 'sass', 'csssplit', 'file-creator', 'postcss', 'jshint', 'uglify']);
+    grunt.registerTask('default', ['bowercopy', 'webpack', 'sass', 'csssplit', 'file-creator', 'postcss']);
 
 };

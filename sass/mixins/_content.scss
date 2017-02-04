@@ -3,7 +3,7 @@
 //////////////////////////////////////////
 
 //Multiline Ellipses
-@mixin multiline-ellipsis($font-size: 1, $lineHeight: 1.25, $lineCount: 1, $context: 16px, $bgColor: white){
+@mixin multiline-ellipsis($font-size: 1, $lineHeight: 1.25, $lineCount: 1, $context: 16px, $bgColor: transparent){
   overflow: hidden;
   //position: relative;
   display: block;
@@ -195,6 +195,46 @@
   }
 }
 
+///
+/// Viewport sized typography with minimum and maximum values
+///
+/// @author Eduardo Boucas (@eduardoboucas)
+///
+/// @param {Number}   $responsive  - Viewport-based size
+/// @param {Number}   $min         - Minimum font size (px)
+/// @param {Number}   $max         - Maximum font size (px)
+///                                  (optional)
+/// @param {Number}   $fallback    - Fallback for viewport-
+///                                  based units (optional)
+///
+/// @example scss - 5vw font size (with 50px fallback),
+///                 minumum of 35px and maximum of 150px
+///  @include responsive-font(5vw, 35px, 150px, 50px);
+///
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+
+  @if $fallback {
+    font-size: $fallback;
+  }
+
+  font-size: $responsive;
+}
+
 
 
 
@@ -267,6 +307,79 @@
   }
 }
 
+// Custom Lists
+@mixin custom-list-style ($first-level-list-style-type:decimal, $second-level-list-style-type:lower-roman, $third-level-list-style-type:lower-alpha) {
+  list-style: none;
+  counter-reset: first-level-ol;
+  li{
+    counter-increment: first-level-ol;
+    &:before{
+      //content: '.'counter(first-level-ol);//counter default is decimal
+      content: counter(first-level-ol, $first-level-list-style-type);
+      color: $global-color-gray-9;
+      font-family: $header-font;
+      font-weight: 400;
+      display: inline-block;
+      width: 1em;
+      margin-left: -22px;
+      margin-right: 9px;
+      text-align: right;
+      direction: rtl;//right-to-left so the dot we wrote in the :before content will be on the right of the number and longer numbers will extend left from there. Remember: RTL numbers do not change order!
+    }
+    //p{
+    //  display: inline;
+    //}
+  }
+  > ul,
+  ol{
+    counter-reset: second-level-ol;
+    li {
+      counter-increment: second-level-ol;
+      &:before {
+        //content: '.' counter(second-level-ol, lower-alpha);//small letters
+        content: counter(second-level-ol, $second-level-list-style-type);
+      }
+    }
+    > ul,
+    ol{
+      counter-reset: third-level-ol;
+      li {
+        counter-increment: third-level-ol;
+        &:before {
+          //content: '.' counter(third-level-ol, lower-roman);//small roman numerals
+          content: counter(third-level-ol, $third-level-list-style-type);
+        }
+      }
+    }
+  }
+}
+
+@mixin custom-list-icon ($before-content, $width:5px, $height:5px, $top-position:10px, $left-position:0, $background-color:#000, $border-radius:50%, $margin-bottom:0, $margin-left:0, $margin-right:0) {
+  > ul,
+  > ol {
+    padding-left: 0;
+  }
+  li {
+    list-style: none;
+    //padding-left: 24px;
+    position: relative;
+    &:before {
+      content: $before-content;
+      width: $width;
+      height: $height;
+      position: absolute;
+      top: $top-position;
+      left: $left-position;
+      background-color: $background-color;
+      border-radius: $border-radius;
+      vertical-align: middle;
+      display: block;
+      margin-bottom: $margin-bottom;
+      margin-left: $margin-left;
+      margin-right: $margin-right;
+    }
+  }
+}
 
 
 

@@ -1,14 +1,19 @@
-// Sticky Footer
-$naturalrose.stickyFooter = $('#site-footer.sticky-footer');
-$naturalrose.stickFooter = function() {
-    $naturalrose.body.addClass('sticky-footer');
-    var $addPadding = function() {
-        var $footer = $('#site-footer'),
-            $footerHeight = $footer.outerHeight() + 'px';
-        $naturalrose.body.css('padding-bottom', $footerHeight );
-    };
-    $addPadding();
-    $(window).resize(function() {
+var stickFooter = function() {
+
+    if (this.stickyFooter.length) {
+        var body = this.body;
+        body.addClass('sticky-footer');
+        var $addPadding = function() {
+            var $footer = $('#site-footer'),
+                $footerHeight = $footer.outerHeight() + 'px';
+            body.css('padding-bottom', $footerHeight );
+        };
         $addPadding();
-    });
+        $(window).resize(function() {
+            $addPadding();
+        });
+    }
+
 };
+
+module.exports = stickFooter;

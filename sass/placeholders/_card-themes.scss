@@ -1,5 +1,36 @@
 //Card Colors
+%card-color-dark {
+  color: #fff;
+  > .content {}
+  .article-image {}
+  .image {
+    img {}
+  }
+  .article-body {}
+  .article-title {}
+  .price {}
+  .description {}
+  .button-wrapper {}
+  .button {}
+}
+
+%card-color-light {
+  color: $body-text-color;
+  > .content {}
+  .article-image {}
+  .image {
+    img {}
+  }
+  .article-body {}
+  .article-title {}
+  .price {}
+  .description {}
+  .button-wrapper {}
+  .button {}
+}
+
 %card-color-light-gray {
+  @extend %card-color-light;
   > .content {
     background-color: $global-color-gray-1;
   }

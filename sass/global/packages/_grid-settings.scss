@@ -42,41 +42,48 @@
 // register states
 // @include gridle_register_default_states();
 // @include gridle_register_state(ipad-landscape, (
-// 	query : "only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)",
+// 	query : "only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape)",
 // 	gutter-height : 50px,
 // 	gutter-width : 30px
 // ));
 @include gridle_register_state ( wearable , (
-    max-width : $breakpoint-wearable,
+    //max-width : 319px,
+	query : "only screen and (max-width : 319px)",
     gutter-width : $gutter-width/2
 ) );
 @include gridle_register_state ( mobile-portrait , (
-	min-width : 321px,
-    max-width : 479px,
+    //min-width : 320px,
+    //max-width : 479px,
+	query : "only screen and (min-width : 320px) and (max-width : 479px)",
     gutter-width : $gutter-width
 ) );
 @include gridle_register_state ( mobile-landscape , (
-    min-width : 480px,
-    max-width : 679px,
+    //min-width : 480px,
+    //max-width : 679px,
+	query : "only screen and (min-width : 480px) and (max-width : 679px)",
     gutter-width : $gutter-width
 ) );
 @include gridle_register_state ( tablet-portrait , (
-    min-width : 680px,
-    max-width : 767px,
+    //min-width : 680px,
+    //max-width : 767px,
+	query : "only screen and (min-width : 680px) and (max-width : 767px)",
     gutter-width : $gutter-width
 ) ) ;
 @include gridle_register_state ( tablet-landscape , (
-    min-width : 768px,
-    max-width : 991px,
+    //min-width : 768px,
+    //max-width : 991px,
+	query : "only screen and (min-width : 768px) and (max-width : 991px)",
     gutter-width : $gutter-width
 ) ) ;
 @include gridle_register_state ( desktop , (
-    min-width : 992px,
-    max-width : $site-width,
+    //min-width : 992px,
+    //max-width : 1199px,
+	query : "only screen and (min-width : 992px) and (max-width : 1199px)",
     gutter-width : $gutter-width
 ) ) ;
 @include gridle_register_state ( site-width , (
-    min-width : $site-width,
+    //min-width : $site-width,
+	query : "only screen and (min-width : 1200px)",
     gutter-width : $gutter-width
 ) ) ;
 

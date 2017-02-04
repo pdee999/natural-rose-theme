@@ -44,7 +44,9 @@
     @extend %card;
     @extend %card-layout-product;
     @extend %sticky-button;
-    > .content {}
+    > .content {
+      max-width: 100%;
+    }
   }
   .article-image {}
   .image {

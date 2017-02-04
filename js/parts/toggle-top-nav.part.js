@@ -1,12 +1,17 @@
-//Toggle Navigation
-$naturalrose.navMenu = $('#navbar-collapse');
-$naturalrose.toggleNav = function() {
-    var $toggleButton = $('#navbar-toggle');
-    //Collapse Menu
-    $naturalrose.navMenu.addClass('collapsed');
+var toggleNav = function() {
 
-    //Toggle menu when button clicked
-    $toggleButton.on('click', function () {
-        $naturalrose.navMenu.toggleClass('collapsed');
-    });
+    if (this.navMenu.length) {
+        var toggleButton = $('#navbar-toggle'),
+            navMenu = this.navMenu;
+        //Collapse Menu
+        navMenu.addClass('collapsed');
+
+        //Toggle menu when button clicked
+        toggleButton.on('click', function () {
+            navMenu.toggleClass('collapsed');
+        });
+    }
+
 };
+
+module.exports = toggleNav;
