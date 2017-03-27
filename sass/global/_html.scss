@@ -173,8 +173,18 @@ b {
 em,
 i {}
 hr {
-	border-color: $global-color-tertiary;
+	border-color: $global-color-gray-3;
 	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	margin: -1px auto 0;
+	width: 80%;
+	.blue {
+		border-color: $global-color-tertiary;
+	}
+	.red {
+		border-color: $global-color-primary;
+	}
 }
 
 //Tables

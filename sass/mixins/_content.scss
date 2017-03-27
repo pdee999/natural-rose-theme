@@ -2,6 +2,12 @@
 //CONTENT
 //////////////////////////////////////////
 
+// Break Out Container
+@mixin breakout() {
+  margin-left: calc((100vw - 100%) / (0 - 2));
+  width: 100vw;
+}
+
 //Multiline Ellipses
 @mixin multiline-ellipsis($font-size: 1, $lineHeight: 1.25, $lineCount: 1, $context: 16px, $bgColor: transparent){
   overflow: hidden;
@@ -311,6 +317,8 @@
 @mixin custom-list-style ($first-level-list-style-type:decimal, $second-level-list-style-type:lower-roman, $third-level-list-style-type:lower-alpha) {
   list-style: none;
   counter-reset: first-level-ol;
+  overflow: hidden;
+  zoom: 1;
   li{
     counter-increment: first-level-ol;
     &:before{
@@ -355,6 +363,8 @@
 }
 
 @mixin custom-list-icon ($before-content, $width:5px, $height:5px, $top-position:10px, $left-position:0, $background-color:#000, $border-radius:50%, $margin-bottom:0, $margin-left:0, $margin-right:0) {
+  overflow: hidden;
+  zoom: 1;
   > ul,
   > ol {
     padding-left: 0;
@@ -399,7 +409,42 @@
   //&:-ms-input-placeholder      {@content}
 }
 
-
+//Custom Form Radio Buttons
+//labels should be a direct sibling of radio input.  e.g.: <input type="radio"></input><label></label>
+//include mixin on radio buttons.  e.g.: input[type="radio"] { @include custon-radio-buttons; }
+@mixin custom-radio-buttons( $button-height: 15px, $button-width: 15px, $button-color: #ccc, $border-color: #999, $button-checked: #eee, $border-checked: #333, $border-width: 2px, $checked-border-width: 2px, $border-radius: 50%, $checked-border-radius: 50% ) {
+  //@include vertical-center;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  + label {
+    position: relative;
+    padding-left: $button-width + 5px;
+    &:before {
+      @include vertical-center;
+      content: "";
+      display: block;
+      width: $button-width;
+      height: $button-height;
+      background-color: $button-color;
+      border: $gray-border-1;
+      border-color: $border-color;
+      border-width: $border-width;
+      border-radius: $border-radius;
+      left: 0;
+    }
+  }
+  &:checked + label:before {
+    background-color: $button-checked;
+    border-color: $border-checked;
+    border-width: $checked-border-width;
+    border-radius: $checked-border-radius;
+    width: $checked-width;
+    height: $checked-height;
+  }
+}
 
 
 //////////////////////////////////////////
@@ -466,7 +511,6 @@
     bottom: 0;
   }
 }
-
 
 //Remove Aspect Ratio
 @mixin remove-aspect-ratio {

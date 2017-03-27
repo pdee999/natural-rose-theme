@@ -51,6 +51,7 @@ var $naturalrose = {
 	heroBackgroundCarousel: require('./parts/hero-unit-background.part'),
 	heroSlider: $('.hero-unit.slider'),
 	heroCarousel: require('./parts/hero-unit.part'),
+	heroMap: require('./parts/hero-unit-map.part'),
 	featureCarousel: $('.hero-unit .hero-feature.slick'),
 	heroFeatureCarousel: require('./parts/hero-unit-feature.part'),
 	quoteSlider: $('.testimonial-slider'),
@@ -97,6 +98,9 @@ var $naturalrose = {
 		// Hero Unit: Feature Carousel
 		$naturalrose.heroFeatureCarousel();
 
+		// Hero Unit: Map
+		$naturalrose.heroMap();
+
 		//Testimonial Slider
 		$naturalrose.testimonialSlider();
 
@@ -105,6 +109,7 @@ var $naturalrose = {
 
 		//Product Slider: Similar
 		$naturalrose.similarSlider();
+
 
 
 	});//End Document Ready

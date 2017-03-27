@@ -294,4 +294,205 @@
       .button {}
     }
   }
+
+  &.map {
+    min-height: 400px;
+    @include gridle_state(tablet-landscape desktop site-width) {
+      min-height: 550px;
+      overflow: visible;
+    }
+    .details-toggle {
+      @include transparent(#fff, .5);
+      border: $white-border;
+      color: #fff;
+      border-radius: 3px;
+      padding: $slug-height/6 $gutter-width;
+      position: absolute;
+      left: $gutter-width/2;
+      top: $slug-height/6;
+      text-shadow: 1px 1px 1px #000;
+      z-index: 1;
+      &:hover {
+        background-color: $global-color-primary;
+      }
+      .icon {
+        @include icon-plus;
+        font-size: .6875em;
+      }
+      .label {
+        &.show {
+          display: inline;
+          visibility: visible;
+        }
+        &.hide {
+          @include remove;
+        }
+      }
+    }
+    .hero-unit-body {
+      //@include remove;
+      @include transparent(#000, .65);
+      color: #fff;
+      opacity: 0;
+      position: absolute;
+      padding-top: $slug-height/6;
+      padding-bottom: $slug-height/6;
+      pointer-events: none;
+      bottom: $slug-height/2;
+      left: 0;
+      right: 25%;
+      width: auto;
+      z-index: 1;
+      //@include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+      //  display: block;
+      //  visibility: visible;
+      //}
+      @include gridle_state(desktop site-width) {
+        right: 45%;
+      }
+      > .content {}
+      a,
+      form {
+        pointer-events: none;
+      }
+    }
+    .hero-header {}
+    .title {
+      @include multiline-ellipsis(2.25, 1, 1, 16px, transparent);
+      color: #fff;
+      font-size: 2.25em;
+    }
+    .date-time {}
+    .date {}
+    .time {}
+    .description {
+      @include multiline-ellipsis(1.125, 1.25, 4, 16px, transparent);
+      @include gridle_state(tablet-landscape desktop) {
+        @include multiline-ellipsis(1.125, 1.25, 10, 16px, transparent);
+      }
+    }
+    .button-wrapper {}
+    .button {
+      @extend %small-button;
+      pointer-events: all;
+    }
+    .map-display {
+      @include gridle_grid(12);
+      padding: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      > .content {
+        height: 100%;
+      }
+    }
+    iframe {
+      @include breakout;
+      //min-height: 550px;
+      height: 100%;
+    }
+    .google-map {
+      height: 100%;
+    }
+
+    &.has-body {
+      .map-display {
+        > .content {}
+      }
+    }
+
+    .directions {
+      background: gray;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      z-index: 99999;
+    }
+    .street-view {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 0;
+    }
+    .street-view-toggle {
+      @include transparent(#fff, .5);
+      border: $white-border;
+      color: #fff;
+      border-radius: 3px;
+      padding: $slug-height/6 $gutter-width;
+      position: absolute;
+      left: $gutter-width*8.5;
+      top: $slug-height/6;
+      text-shadow: 1px 1px 1px #000;
+      z-index: 1;
+      &:hover {
+        background-color: $global-color-primary;
+      }
+      .icon {
+        @include icon-plus;
+        font-size: .6875em;
+      }
+      .label {
+        &.show {
+          display: inline;
+          visibility: visible;
+        }
+        &.hide {
+          @include remove;
+        }
+      }
+    }
+
+    &.details-active {
+      .details-toggle {
+        .icon {
+          @include icon-minus;
+        }
+        .label {
+          &.show {
+            @include remove;
+          }
+          &.hide {
+            display: inline !important;
+            visibility: visible !important;
+          }
+        }
+      }
+      .hero-unit-body {
+        opacity: 1;
+        a,
+        form {
+          pointer-events: all;
+        }
+      }
+    }
+
+    &.street-view-active {
+      .street-view {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .street-view-toggle {
+        .icon {
+          @include icon-minus;
+        }
+        .label {
+          &.show {
+            @include remove;
+          }
+          &.hide {
+            display: inline !important;
+            visibility: visible !important;
+          }
+        }
+      }
+    }
+  }
 }

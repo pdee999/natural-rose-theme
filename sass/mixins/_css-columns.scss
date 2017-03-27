@@ -65,3 +65,54 @@
   -moz-column-fill: $column-fill;
   column-fill: $column-fill;
 }
+
+//CSS Break Inside
+@mixin css-break-inside($break: null) {
+  @if not $break {
+    -webkit-column-break-inside: auto;
+    page-break-inside: auto;
+    break-inside: auto;
+  } @else if $break == avoid-column or avoid-page or avoid-region {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: $break;
+  } @else {
+    -webkit-column-break-inside: $break;
+    page-break-inside: $break;
+    break-inside: $break;
+  }
+}
+
+//CSS Break Before
+@mixin css-break-before($break: false) {
+  @if not $break {
+    -webkit-column-break-before: auto;
+    page-break-before: auto;
+    break-before: auto;
+  } @else if $break == avoid-column or avoid-page or avoid-region {
+    -webkit-column-break-before: avoid;
+    page-break-before: avoid;
+    break-before: $break;
+  } @else {
+    -webkit-column-break-before: $break;
+    page-break-before: $break;
+    break-before: $break;
+  }
+}
+
+//CSS Break After
+@mixin css-break-after($break: null) {
+  @if not $break {
+    -webkit-column-break-after: auto;
+    page-break-after: auto;
+    break-after: auto;
+  } @else if $break == avoid-column or avoid-page or avoid-region {
+    -webkit-column-break-after: avoid;
+    page-break-after: avoid;
+    break-after: $break;
+  } @else {
+    -webkit-column-break-after: $break;
+    page-break-after: $break;
+    break-after: $break;
+  }
+}
