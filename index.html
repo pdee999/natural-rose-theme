@@ -354,42 +354,67 @@
 			</div>
 		</section>
 
-		<section id="hero-unit-8" class="hero-unit map details-active" data-lat="38.955786" data-lng="-76.882733" data-location="7631 Seans Terrace, Lanham, MD 20706">
+		<!--<section id="hero-unit-8" class="hero-unit map details-active" data-lat="38.955786" data-lng="-76.882733" data-address="9450 Buena Vista Ave, Lanham, MD, 20706">-->
+		<section id="hero-unit-8" class="hero-unit map details-active" data-address="9450 Buena Vista Ave, Lanham, MD, 20706">
 			<div class="hero-unit-container">
 				<div class="hero-unit-row">
-					<button class="details-toggle">
+					<button class="details-toggle" role="button" aria-pressed="true" title="Details">
 						<span class="icon"></span>
-						<span class="label show">Show Details</span>
-						<span class="label hide">Hide Details</span>
+						<span class="label show" title="Show Details">Show Details</span>
+						<span class="label hide" title="Hide Details">Hide Details</span>
 					</button>
-					<button class="street-view-toggle">
+					<button class="street-view-toggle" role="button" aria-pressed="false" title="Street View">
 						<span class="icon"></span>
-						<span class="label show">Show Street View</span>
-						<span class="label hide">Hide Street View</span>
+						<span class="label show" title="Show Street View">Show Street View</span>
+						<span class="label hide" title="Hide Street View">Hide Street View</span>
 					</button>
-					<article class="hero-unit-body">
-						<div class="content">
-							<header class="hero-header">
-								<h1 class="title">Event title</h1>
-							</header>
-							<p class="date-time">
-								<small class="date">October 11, 1981</small>
-								<small class="time">4:20 PM</small>
-							</p>
-							<p class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.</p>
-							<p class="button-wrapper">
-								<a class="button">Register</a>
-							</p>
-						</div>
-					</article>
+					<button class="directions-toggle" role="button" aria-pressed="false" title="Directions">
+						<span class="icon"></span>
+						<span class="label get" title="Get Directions">Get Directions</span>
+						<span class="label show" title="Show Directions">Show Directions</span>
+						<span class="label hide" title="Hide Directions">Hide Directions</span>
+					</button>
+					<button class="center-map" role="button" aria-pressed="false" title="Center Map">
+						<span class="icon"></span>
+						<span class="label hide" title="Hide Directions">Center Map</span>
+					</button>
 					<div class="map-display">
 						<div class="content">
+							<article class="hero-unit-body">
+								<div class="content">
+									<header class="hero-header">
+										<h1 class="title">Event title</h1>
+									</header>
+									<p class="date-time">
+										<small class="date">October 11, 1981</small>
+										<small class="time">4:20 PM</small>
+									</p>
+									<p class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.</p>
+									<p class="button-wrapper">
+										<a class="button">Register</a>
+									</p>
+								</div>
+							</article>
 							<div class="google-map"></div>
 							<div class="street-view"></div>
-							<div class="directions">
-								<input type="text" id="startLocation" name="start-location">
-								<button class="submit">Get Directions</button>
-							</div>
+						</div>
+					</div>
+					<div class="directions">
+						<div class="content">
+							<input type="text" id="startLocation" name="start-location" class="start-location" placeholder="Enter Start Address">
+							<button class="get-directions">
+								<span class="icon"></span>
+								<span class="label">Get Directions</span>
+							</button>
+							<button class="close-directions">
+								<span class="icon"></span>
+								<span class="label">Close</span>
+							</button>
+							<div class="directions-display"></div>
+							<button class="print-directions">
+								<span class="icon"></span>
+								<span class="label">Print Directions</span>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -1456,7 +1481,6 @@
     <!--<script type="text/javascript" src="bundle/bundle.js"></script>-->
 	<script type="text/javascript" src="bundle/commons.chunk.js"></script>
 	<script type="text/javascript" src="bundle/main.entry.chunk.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE6tJs_dfgnv3oR_aU2S8xgCUAXIOX5xQ"
-		async defer></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE6tJs_dfgnv3oR_aU2S8xgCUAXIOX5xQ" async defer></script>
 
 </html>

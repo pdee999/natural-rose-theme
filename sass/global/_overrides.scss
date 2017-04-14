@@ -1,0 +1,56 @@
+//Google Maps
+.gm-iv-address {
+  min-height: 57px;
+}
+.gm-style-mtc {
+  @include gridle_state(wearable) {
+    display: none;
+  }
+}
+.adp {
+  table {
+    border: none;
+  }
+  td {
+    //border-color: #676767;
+    border-color: $global-color-gray-3;
+    color: $global-color-gray-1;
+    padding-bottom: $slug-height/3;
+    padding-top: $slug-height/3;
+    &:hover {
+      cursor: default;
+    }
+  }
+  tr:last-child {
+    td {
+      padding-bottom: 0;
+    }
+  }
+}
+.adp-text {
+  background-color: $global-color-gray-5;
+  color: $global-color-gray-1;
+  font-family: $header-font;
+}
+.adp-summary {
+  color: $global-color-gray-1;
+  font-family: $body-font;
+  margin-bottom: $slug-height/6;
+}
+.adp-directions {
+  font-family: $body-font;
+  width: 100%;
+  b {
+    //font-family: $header-font;
+  }
+}
+.adp-substep {
+  .adp-stepicon {
+    .adp-maneuver {
+      background-image: url('../img/maneuvers.png');
+    }
+  }
+}
+.adp-legal {
+  margin-bottom: $slug-height/3;
+}

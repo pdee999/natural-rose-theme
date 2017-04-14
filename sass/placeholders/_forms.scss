@@ -130,13 +130,14 @@ form,
 	input[type="button"],
 	input[type="submit"] {
 		@extend %button;
-		padding: $slug-height/6 $gutter-width;
+		padding: $slug-height/4 $gutter-width;
 		margin: $slug-height/12 0;
 		vertical-align: middle;
 		display: block;
 		width: 100%;
 		@include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
 			display: inline-block;
+			margin: 0;
 			width: auto;
 		}
 	}

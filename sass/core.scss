@@ -75,7 +75,8 @@
         "components/product-slider-similar.scss";
 
 //Import Overrides
-@import "global/ie",
+@import "global/overrides",
+        "global/ie",
         "global/firefox",
         "global/ios";
 

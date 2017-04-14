@@ -111,6 +111,12 @@
     content: '\e809';
   }
 }
+@mixin icon-email-inverted {
+  @include icon;
+  &:after {
+    content: '\e84d';
+  }
+}
 @mixin icon-location {
   @include icon;
   &:after {
@@ -121,6 +127,18 @@
   @include icon;
   &:after {
     content: '\e80b';
+  }
+}
+@mixin icon-address-card {
+  @include icon;
+  &:after {
+    content: '\f2bb';
+  }
+}
+@mixin icon-address-card-inverted {
+  @include icon;
+  &:after {
+    content: '\f2bc';
   }
 }
 @mixin icon-qrcode {
@@ -153,6 +171,18 @@
     content: '\e80d';
   }
 }
+@mixin icon-like {
+  @include icon;
+  &:after {
+    content: '\f164';
+  }
+}
+@mixin icon-dislike {
+  @include icon;
+  &:after {
+    content: '\f165';
+  }
+}
 @mixin icon-caretleft {
   @include icon;
   &:after {
@@ -177,28 +207,52 @@
     content: '\e812';
   }
 }
-@mixin icon-arrowright {
+@mixin icon-arrowhead-right {
   @include icon;
   &:after {
     content: '\e813';
   }
 }
-@mixin icon-arrowleft {
+@mixin icon-arrowhead-left {
   @include icon;
   &:after {
     content: '\e814';
   }
 }
-@mixin icon-arrowup {
+@mixin icon-arrowhead-up {
   @include icon;
   &:after {
     content: '\e815';
   }
 }
-@mixin icon-arrowdown {
+@mixin icon-arrowhead-down {
   @include icon;
   &:after {
     content: '\e816';
+  }
+}
+@mixin icon-arrow-right {
+  @include icon;
+  &:after {
+    content: '\e847';
+  }
+}
+@mixin icon-arrow-left {
+  @include icon;
+  &:after {
+    content: '\e84a';
+  }
+}
+@mixin icon-arrow-up {
+  @include icon;
+  &:after {
+    content: '\e848';
+  }
+}
+@mixin icon-arrow-down {
+  @include icon;
+  &:after {
+    content: '\e849';
   }
 }
 @mixin icon-plus {
@@ -417,6 +471,97 @@
     content: '\e839';
   }
 }
+@mixin icon-cards {
+  @include icon;
+  &:after {
+    content: '\e842';
+  }
+}
+@mixin icon-grid {
+  @include icon;
+  &:after {
+    content: '\e840';
+  }
+}
+@mixin icon-chart-area {
+  @include icon;
+  &:after {
+    content: '\f1fe';
+  }
+}
+@mixin icon-chart-bar {
+  @include icon;
+  &:after {
+    content: '\e844';
+  }
+}
+@mixin icon-chart-line {
+  @include icon;
+  &:after {
+    content: '\f201';
+  }
+}
+@mixin icon-list {
+  @include icon;
+  &:after {
+    content: '\e841';
+  }
+}
+@mixin icon-chart-bullets {
+  @include icon;
+  &:after {
+    content: '\f0ca';
+  }
+}
+@mixin icon-bulleted-list {
+  @include icon;
+  &:after {
+    content: '\e843';
+  }
+}
+@mixin icon-get-directions {
+  @include icon;
+  &:after {
+    content: '\e845';
+  }
+}
+@mixin icon-street-view {
+  @include icon;
+  &:after {
+    content: '\f21d';
+  }
+}
+@mixin icon-nav-point {
+  @include icon;
+  &:after {
+    content: '\e83f';
+  }
+}
+@mixin icon-cancel {
+  @include icon;
+  &:after {
+    content: '\e83e';
+  }
+}
+@mixin icon-print {
+  @include icon;
+  &:after {
+    content: '\e846';
+  }
+}
+@mixin icon-map-marker {
+  @include icon;
+  &:after {
+    content: '\f276';
+  }
+}@mixin icon-signs {
+  @include icon;
+  &:after {
+    content: '\f277';
+  }
+}
+
+
 
 //LEADING ICONS
 @mixin lead-icon-default {
@@ -496,6 +641,13 @@
     content: '\e809';
   }
 }
+@mixin lead-icon-email-inverted {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e84d';
+  }
+}
 @mixin lead-icon-location {
   @include icon;
   @include lead-icon;
@@ -508,6 +660,20 @@
   @include lead-icon;
   &:before {
     content: '\e80b';
+  }
+}
+@mixin lead-icon-address-card {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f2bb';
+  }
+}
+@mixin lead-icon-address-card-inverted {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f2bc';
   }
 }
 @mixin lead-icon-qrcode {
@@ -545,6 +711,20 @@
     content: '\e80d';
   }
 }
+@mixin lead-icon-like {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f164';
+  }
+}
+@mixin lead-icon-dislike {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f165';
+  }
+}
 @mixin lead-icon-caretleft {
   @include icon;
   @include lead-icon;
@@ -573,32 +753,60 @@
     content: '\e812';
   }
 }
-@mixin lead-icon-arrowright {
+@mixin lead-icon-arrowhead-right {
   @include icon;
   @include lead-icon;
   &:before {
     content: '\e813';
   }
 }
-@mixin lead-icon-arrowleft {
+@mixin lead-icon-arrowhead-left {
   @include icon;
   @include lead-icon;
   &:before {
     content: '\e814';
   }
 }
-@mixin lead-icon-arrowup {
+@mixin lead-icon-arrowhead-up {
   @include icon;
   @include lead-icon;
   &:before {
     content: '\e815';
   }
 }
-@mixin lead-icon-arrowdown {
+@mixin lead-icon-arrowhead-down {
   @include icon;
   @include lead-icon;
   &:before {
     content: '\e816';
+  }
+}
+@mixin lead-icon-arrow-right {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e847';
+  }
+}
+@mixin lead-icon-arrow-left {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e84a';
+  }
+}
+@mixin lead-icon-arrow-up {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e848';
+  }
+}
+@mixin lead-icon-arrow-down {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e849';
   }
 }
 @mixin lead-icon-plus {
@@ -851,5 +1059,110 @@
   @include lead-icon;
   &:before {
     content: '\e839';
+  }
+}
+@mixin lead-icon-cards {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e842';
+  }
+}
+@mixin lead-icon-grid {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e840';
+  }
+}
+@mixin lead-icon-chart-area {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f1fe';
+  }
+}
+@mixin lead-icon-chart-bar {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e844';
+  }
+}
+@mixin lead-icon-chart-line {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f201';
+  }
+}
+@mixin lead-icon-list {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e841';
+  }
+}
+@mixin lead-icon-chart-bullets {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f0ca';
+  }
+}
+@mixin lead-icon-bulleted-list {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e843';
+  }
+}
+@mixin lead-icon-get-directions {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e845';
+  }
+}
+@mixin lead-icon-street-view {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f21d';
+  }
+}
+@mixin lead-icon-map-nav-point {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e83f';
+  }
+}
+@mixin lead-icon-cancel {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e83e';
+  }
+}
+@mixin lead-icon-print {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e846';
+  }
+}
+@mixin lead-icon-map-marker {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f276';
+  }
+}
+@mixin lead-icon-signs {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\f277';
   }
 }
