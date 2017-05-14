@@ -358,26 +358,41 @@
 		<section id="hero-unit-8" class="hero-unit map details-active" data-address="9450 Buena Vista Ave, Lanham, MD, 20706">
 			<div class="hero-unit-container">
 				<div class="hero-unit-row">
-					<button class="details-toggle" role="button" aria-pressed="true" title="Details">
+					<button class="hero-unit-map-control details-toggle" role="button" aria-pressed="true" title="Details">
 						<span class="icon"></span>
 						<span class="label show" title="Show Details">Show Details</span>
 						<span class="label hide" title="Hide Details">Hide Details</span>
 					</button>
-					<button class="street-view-toggle" role="button" aria-pressed="false" title="Street View">
+					<button class="hero-unit-map-control street-view-toggle" role="button" aria-pressed="false" title="Street View">
 						<span class="icon"></span>
 						<span class="label show" title="Show Street View">Show Street View</span>
 						<span class="label hide" title="Hide Street View">Hide Street View</span>
 					</button>
-					<button class="directions-toggle" role="button" aria-pressed="false" title="Directions">
+					<button class="hero-unit-map-control directions-toggle" role="button" aria-pressed="false" title="Directions">
 						<span class="icon"></span>
 						<span class="label get" title="Get Directions">Get Directions</span>
 						<span class="label show" title="Show Directions">Show Directions</span>
 						<span class="label hide" title="Hide Directions">Hide Directions</span>
 					</button>
-					<button class="center-map" role="button" aria-pressed="false" title="Center Map">
+					<button class="hero-unit-map-control center-map" role="button" aria-pressed="false" title="Center Map">
 						<span class="icon"></span>
-						<span class="label hide" title="Hide Directions">Center Map</span>
+						<span class="label" title="Center Map">Center Map</span>
 					</button>
+					<div class="display-controls">
+						<button class="hero-unit-map-control full-screen" role="button" aria-pressed="false" title="Full Screen">
+							<span class="icon"></span>
+							<span class="label" title="Full Screen">Full Screen</span>
+						</button>
+						<button class="hero-unit-map-control zoom-in" role="button" aria-pressed="false" title="Zoom In">
+							<span class="icon"></span>
+							<span class="label" title="Zoom In">Zoom In</span>
+						</button>
+						<button class="hero-unit-map-control zoom-out" role="button" aria-pressed="false" title="Zoom Out">
+							<span class="icon"></span>
+							<span class="label" title="Zoom Out">Zoom Out</span>
+						</button>
+					</div>
+
 					<div class="map-display">
 						<div class="content">
 							<article class="hero-unit-body">
@@ -385,9 +400,15 @@
 									<header class="hero-header">
 										<h1 class="title">Event title</h1>
 									</header>
-									<p class="date-time">
+									<p class="info">
 										<small class="date">October 11, 1981</small>
 										<small class="time">4:20 PM</small>
+										<span class="divider"></span>
+										<small class="location">An Event Location</small>
+										<small class="address">9450 Buena Vista Ave</small>
+										<small class="city">Lanham</small>
+										<small class="state">MD</small>
+										<small class="zip">20706</small>
 									</p>
 									<p class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.</p>
 									<p class="button-wrapper">
@@ -722,10 +743,10 @@
                 </div>
             </section>
 
-			<section id="social-actions-2"  class="social-actions">
+			<section id="social-actions-2"  class="social-actions follow">
 				<div class="social-actions-container">
 					<div class="social-actions-row">
-						<div class="social-actions-banner follow">
+						<div class="social-actions-banner">
 							<div class="content">
 								<nav id="nav-follow" class="follow-us" role="navigation" aria-label="Follow Us">
 									<div id="follow-us" class="content">
@@ -811,10 +832,10 @@
 				</div>
 			</section>
 
-			<section id="social-actions-3" class="social-actions">
+			<section id="social-actions-3" class="social-actions share">
 				<div class="social-actions-container">
 					<div class="social-actions-row">
-						<div class="social-actions-banner share">
+						<div class="social-actions-banner">
 							<div class="content">
 								<nav id="nav-follow" class="follow-us" role="navigation" aria-label="Follow Us">
 									<div id="follow-us" class="content">

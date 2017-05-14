@@ -560,6 +560,17 @@
     content: '\f277';
   }
 }
+@mixin icon-maximize {
+  @include icon;
+  &:after {
+    content: '\e808';
+  }
+}@mixin icon-minimize {
+  @include icon;
+  &:after {
+    content: '\e84f';
+  }
+}
 
 
 
@@ -1164,5 +1175,18 @@
   @include lead-icon;
   &:before {
     content: '\f277';
+  }
+}
+@mixin lead-icon-maximize {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e808';
+  }
+}@mixin lead-icon-minimize {
+  @include icon;
+  @include lead-icon;
+  &:before {
+    content: '\e84f';
   }
 }

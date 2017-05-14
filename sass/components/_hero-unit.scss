@@ -308,35 +308,60 @@
       padding: 0 $gutter-width/2;
     }
     .hero-unit-row {}
-    .details-toggle {
-      @include remove;
-      //@include transparent(#fff, .5);
+    .display-controls {
+      position: absolute;
+      right: $gutter-width/2;
+      top: $slug-height*1.283333333333333;
+      width: 25px;
+    }
+    .hero-unit-map-control {
       @include transparent(#000, .65);
       border: $white-border;
       color: #fff;
       border-radius: 3px;
       padding: $slug-height/6 $gutter-width;
       position: absolute;
+      text-shadow: $default-text-shadow;
+      z-index: 3;
+      width: 53px;
+      @include gridle_state(desktop site-width) {
+        width: 190px;
+      }
+      &:hover,
+      &:focus {
+        background-color: $global-color-primary;
+        outline-color: transparent;
+      }
+      &.full-screen,
+      &.zoom-in,
+      &.zoom-out {
+        height: 25px;
+        line-height: 0;
+        padding: 0;
+        position: relative;
+        width: 100%;
+      }
+      .icon {
+        font-size: .6875em;
+        vertical-align: middle;
+      }
+    }
+    .details-toggle {
+      @include remove;
       left: $gutter-width/2;
       top: $slug-height/6;
-      text-shadow: 1px 1px 1px #000;
-      z-index: 3;
       @include gridle_state(mobile-portrait mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
         display: block;
         visibility: visible;
       }
-      &:hover {
-        background-color: $global-color-primary;
-      }
+      &:hover {}
       .icon {
         @include icon-list;
-        font-size: .6875em;
-        vertical-align: middle;
       }
       .label {
         &.show {
           @include remove;
-          @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+          @include gridle_state(desktop site-width) {
             display: inline;
             visibility: visible;
           }
@@ -347,30 +372,17 @@
       }
     }
     .street-view-toggle {
-      //@include transparent(#fff, .5);
-      @include transparent(#000, .65);
-      border: $white-border;
-      border-radius: 3px;
-      color: #fff;
-      padding: $slug-height/6 $gutter-width;
-      position: absolute;
       left: $gutter-width/2;
       top: $slug-height/6;
-      text-shadow: 1px 1px 1px #000;
-      z-index: 3;
       @include gridle_state(mobile-portrait mobile-landscape tablet-portrait tablet-landscape ) {
         left: $gutter-width*3.9;
       }
       @include gridle_state(desktop site-width) {
-        left: $gutter-width*8.5;
+        left: $gutter-width*10.75;
       }
-      &:hover {
-        background-color: $global-color-primary;
-      }
+      &:hover {}
       .icon {
         @include icon-street-view;
-        font-size: .6875em;
-        vertical-align: middle;
       }
       .label {
         &.show {
@@ -386,20 +398,11 @@
       }
     }
     .directions-toggle {
-      //@include transparent(#fff, .5);
-      @include transparent(#000, .65);
-      border: $white-border;
-      border-radius: 3px;
-      color: #fff;
-      padding: $slug-height/6 $gutter-width;
-      position: absolute;
       left: $gutter-width/2;
       top: $slug-height*1.05;
-      text-shadow: 1px 1px 1px #000;
-      z-index: 3;
       @include gridle_state(mobile-portrait) {
         left: $gutter-width/2;
-        top: $slug-height/1.033333333333333;
+        top: $slug-height/1.051075333333333;
       }
       @include gridle_state(mobile-landscape tablet-portrait tablet-landscape ) {
         left: $gutter-width*7.2;
@@ -408,16 +411,11 @@
         top: $slug-height/6;
       }
       @include gridle_state(desktop site-width) {
-        left: $gutter-width*18.45;
+        left: $gutter-width*21;
       }
-      &:hover {
-        background-color: $global-color-primary;
-      }
+      &:hover {}
       .icon {
-        //@include icon-nav-point;
         @include icon-signs;
-        font-size: .6875em;
-        vertical-align: middle;
       }
       .label {
         &.show {
@@ -436,38 +434,25 @@
       }
     }
     .center-map {
-      //@include transparent(#fff, .5);
-      @include transparent(#000, .65);
-      border: $white-border;
-      border-radius: 3px;
-      color: #fff;
-      padding: $slug-height/6 $gutter-width;
-      position: absolute;
       left: $gutter-width/2;
       top: $slug-height*1.9;
-      text-shadow: 1px 1px 1px #000;
-      z-index: 3;
       @include gridle_state(mobile-portrait) {
         left: $gutter-width*3.9;
-        top: $slug-height/1.033333333333333;
+        top: $slug-height/1.051075333333333;
       }
       @include gridle_state(mobile-landscape tablet-portrait tablet-landscape ) {
-        left: $gutter-width*10.35;
+        left: $gutter-width*10.5;
       }
       @include gridle_state(mobile-landscape tablet-portrait tablet-landscape desktop site-width) {
         top: $slug-height/6;
       }
       @include gridle_state(desktop site-width) {
-        left: $gutter-width*27;
+        left: $gutter-width*31.25;
       }
-      &:hover {
-        background-color: $global-color-primary;
-      }
+      &:hover {}
       .icon {
         //@include icon-map-marker;
         @include icon-nav-point;
-        font-size: .6875em;
-        vertical-align: middle;
       }
       .label {
         @include remove;
@@ -475,6 +460,45 @@
           display: inline;
           visibility: visible;
         }
+      }
+    }
+    .full-screen {
+      margin-bottom: $slug-height/4;
+      //right: $gutter-width/2;
+      //top: 200px;
+      &:hover {}
+      .icon {
+        @include icon-maximize;
+      }
+      .label {
+        @include remove;
+      }
+    }
+    .zoom-in {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      //right: $gutter-width/2;
+      //top: 240px;
+      &:hover {}
+      .icon {
+        @include icon-plus;
+      }
+      .label {
+        @include remove;
+      }
+    }
+    .zoom-out {
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      //right: $gutter-width/2;
+      //top: 280px;
+      &:hover {}
+      .icon {
+        @include icon-minus;
+      }
+      .label {
+        @include remove;
       }
     }
     .map-display {
@@ -491,6 +515,56 @@
         height: 100%;
       }
     }
+    .origin-address {
+      font-weight: bold;
+      margin: 0;
+    }
+    .map-info {
+      .title {
+        //color: $body-text-color;
+        font-size: 2.25em;
+      }
+      .info {}
+      .date {
+        &:after {
+          content: "\0002C";
+          margin: 0 $gutter-width/4 0 0;
+        }
+      }
+      .time {}
+      .divider {
+        display: block;
+      }
+      .location {
+        display: block;
+        font-size: 1.25em;
+        font-weight: bold;
+      }
+      .address {
+        font-weight: bold;
+        &:after {
+          content: "\0002C";
+          margin: 0 $gutter-width/4 0 0;
+        }
+      }
+      .city {
+        font-weight: bold;
+        &:after {
+          content: "\0002C";
+          margin: 0 $gutter-width/4 0 0;
+        }
+      }
+      .state {
+        font-weight: bold;
+      }
+      .zip {
+        font-weight: bold;
+      }
+      .description {
+        margin: 0;
+        overflow-y: scroll;
+      }
+    }
     .hero-unit-body {
       @include remove;
       @include transparent(#000, .65);
@@ -503,7 +577,7 @@
       bottom: $slug-height/2;
       //top: $slug-height * 1.966666666666667;
       left: 0;
-      right: 10%;
+      right: 15%;
       width: auto;
       z-index: 3;
       //@include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
@@ -538,22 +612,53 @@
       form {
         pointer-events: none;
       }
-    }
-    .hero-header {}
-    .title {
-      @include multiline-ellipsis(2.25, 1, 1, 16px, transparent);
-      color: #fff;
-      font-size: 2.25em;
-    }
-    .date-time {
-      @include multiline-ellipsis(1.125, 1.25, 1, 16px, transparent);
-    }
-    .date {}
-    .time {}
-    .description {
-      @include multiline-ellipsis(1.125, 1.25, 4, 16px, transparent);
-      @include gridle_state(tablet-landscape desktop) {
-        @include multiline-ellipsis(1.125, 1.25, 8, 16px, transparent);
+      .hero-header {}
+      .title {
+        @include multiline-ellipsis(2.25, 1, 1, 16px, transparent);
+        color: #fff;
+        font-size: 2.25em;
+      }
+      .info {
+        @include multiline-ellipsis(1.125, 1.25, 1, 16px, transparent);
+      }
+      .date {
+        &:after {
+          content: "\0002C";
+          margin: 0 $gutter-width/10 0 0;
+        }
+      }
+      .time {}
+      .divider {
+        &:after {
+          content: "\0007C";
+          margin: 0 $gutter-width/4;
+        }
+      }
+      .location {
+        &:after {
+          content: "\0002C";
+          margin: 0 $gutter-width/10 0 0;
+        }
+      }
+      .address {
+        &:after {
+          content: "\0002C";
+          margin: 0;
+        }
+      }
+      .city {
+        &:after {
+          content: "\0002C";
+          margin: 0;
+        }
+      }
+      .state {}
+      .zip {}
+      .description {
+        @include multiline-ellipsis(1.125, 1.25, 4, 16px, transparent);
+        @include gridle_state(tablet-landscape desktop) {
+          @include multiline-ellipsis(1.125, 1.25, 8, 16px, transparent);
+        }
       }
     }
     .button-wrapper {}
@@ -623,6 +728,9 @@
           padding-bottom: $slug-height/3;
           padding-top: $slug-height/3;
         }
+      }
+      button {
+        outline-color: transparent;
       }
     }
     input.start-location {
@@ -706,6 +814,10 @@
         pointer-events: all;
       }
       .street-view-toggle {
+        .display-controls {
+          opacity: 0;
+          pointer-events: none;
+        }
         .icon {
           //@include icon-minus;
         }
@@ -787,6 +899,39 @@
         }
       }
     }
+
+    &.full-screen-active {
+      z-index: 5;
+      .full-screen {
+        .icon {
+          @include icon-minimize;
+        }
+      }
+      .details-toggle,
+      .street-view-toggle,
+      .directions-toggle,
+      .center-map,
+      .hero-unit-body,
+      .street-view {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .display-controls {
+        position: fixed;
+        z-index: 9001;
+      }
+      .map-display {
+        height: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 9000;
+      }
+    }
+
   }
 
 }

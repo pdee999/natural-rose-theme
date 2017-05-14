@@ -54,3 +54,128 @@
 .adp-legal {
   margin-bottom: $slug-height/3;
 }
+.gm-style-mtc {
+  border: $white-border !important;
+  > div {
+    background-color: rgba(0, 0, 0, .65) !important;
+    color: #fff !important;
+    font-family: $body-font !important;
+    text-shadow: $default-text-shadow !important;
+    &:hover,
+    &:focus {
+      background-color: $global-color-primary !important;
+    }
+    + div {
+      background-color: transparent !important;
+      padding: 0 !important;
+      &:hover,
+      &:focus {
+        background-color: transparent !important;
+      }
+    }
+    > div {
+      border: $white-border !important;
+      border-top: none !important;
+      border-bottom-left-radius: 3px !important;
+      border-bottom-right-radius: 3px !important;
+      background-color: rgba(0,0,0,.65) !important;
+      color: #fff !important;
+      font-family: $body-font !important;
+      text-shadow: $default-text-shadow !important;
+      &:hover,
+      &:focus {
+        background-color: $global-color-primary !important;
+      }
+    }
+  }
+  &:first-child {
+    border-right: none !important;
+    border-top-left-radius: 3px !important;
+    border-bottom-left-radius: 3px !important;
+  }
+  &:last-child {
+    //border-left: none !important;
+    border-top-right-radius: 3px !important;
+    border-bottom-right-radius: 3px !important;
+  }
+}
+.gm-bundled-control {
+  .gmnoprint {
+    > div {
+      //border-radius: 3px !important;
+      //background-color: rgba(0,0,0,.65) !important;
+      background-color: transparent !important;
+      > div {
+        background-color: rgba(0,0,0,.65) !important;
+        border: $white-border !important;
+        &:first-child {
+          //border-bottom: none !important;
+          border-top-left-radius: 3px !important;
+          border-top-right-radius: 3px !important;
+          &:hover,
+          &:focus {
+            background-color: $global-color-primary !important;
+            > div {
+              //background-position: -60px 0;
+            }
+          }
+          > div {
+            background-position: -90px 0;
+          }
+        }
+        &:nth-child(2) {
+          @include remove;
+        }
+        &:last-child {
+          border-top: none !important;
+          border-bottom-left-radius: 3px !important;
+          border-bottom-right-radius: 3px !important;
+          &:hover,
+          &:focus {
+            background-color: $global-color-primary !important;
+            > div {
+              //background-position: -60px -15px;
+            }
+          }
+          > div {
+            background-position: -90px -15px;
+          }
+        }
+        > div {
+          background-image: url('../img/tmapctrl.png');
+          background-repeat: no-repeat;
+          left: 6px !important;
+          top: 5px !important;
+        }
+        img {
+          @include remove;
+        }
+      }
+    }
+  }
+  //+ .gmnoprint {
+  //  + .gm-style-cc {
+  //    + div {
+  //      //background-image: url('../img/google-maps-full-screen.png');
+  //      background-repeat: no-repeat;
+  //      //background-position: 0px -87px;
+  //      //background-color: rgba(0,0,0,.65) !important;
+  //      border: $white-border !important;
+  //      border-radius: 3px !important;
+  //      //margin: $slug-height/6 $gutter-width/1.818181818181818 !important
+  //      margin: $slug-height/6 $gutter-width/2 !important;
+  //      height: 28px !important;
+  //      width: 28px !important;
+  //      &:hover,
+  //      &:focus {
+  //        background-color: $global-color-primary !important;
+  //        //background-image: url('../img/google-maps-full-screen-hover.png');
+  //      }
+  //      img {
+  //        display: none !important;
+  //        visibility: hidden !important;
+  //      }
+  //    }
+  //  }
+  //}
+}

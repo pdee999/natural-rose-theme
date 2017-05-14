@@ -237,6 +237,15 @@ module.exports = function(grunt) {
                     'parallax.js/parallax.min.js': 'parallax.js/parallax.min.js'
                 }
             },
+            jspdf: {
+                options: {
+                    runBower: true,
+                    report: true,
+                    clean: true,
+                    destPrefix: 'libs/'
+                },
+                src: 'jspdf/dist/'
+            },
             /* jqueryui: {
                 options: {
                     runBower: true,

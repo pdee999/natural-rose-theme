@@ -46,6 +46,13 @@
   //}
 }
 
+//Remove Multiline Ellipsis
+@mixin remove-ellipsis {
+  max-height: none;
+  -webkit-line-clamp: initial;
+  text-overflow: initial;
+}
+
 //Gradient
 //@mixin vertical-gradient($start-color, $start-opacity, $end-color, $end-opacity, $start-position: 0%, $end-position: 100%) {
 //  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&1+0,0+100 */
@@ -497,6 +504,7 @@
 */
 @mixin aspect-ratio($width, $height) {
   position: relative;
+  overflow: hidden;
   &:before {
     display: block;
     content: "";

@@ -1,9 +1,13 @@
 var googleMap = function() {
 
+    console.log($(this));
+
     var map = $('.hero-unit.map');
     if (map.length) {
         $.each(map, function() {
             var thisMap = this,
+                map,
+                markers = [],
                 mapDisplayStatic = $(thisMap).find('.map-display .google-map')[0],
                 mapDisplayStreetView = $(thisMap).find('.map-display .street-view')[0],
                 mapDisplayDirections = $(thisMap).find('.directions .directions-display')[0],
@@ -16,11 +20,54 @@ var googleMap = function() {
                 // mapCountry = $(thisMap).data('country'),
                 detailsToggle = $(thisMap).find('.details-toggle'),
                 startInput = $(thisMap).find('#startLocation'),
+                directionsWrapper = $(thisMap).find('.directions'),
                 getDirectionsButton = $(thisMap).find('.directions .get-directions'),
+                printDirectionsButton = $(thisMap).find('.directions .print-directions'),
                 streetViewToggle = $(thisMap).find('.street-view-toggle'),
                 directionsToggle = $(thisMap).find('.directions-toggle'),
                 directionsClose = $(thisMap).find('.close-directions'),
-                centerMapButton = $(thisMap).find('.center-map');
+                fullScreenButton = $(thisMap).find('.full-screen'),
+                zoomInButton = $(thisMap).find('.zoom-in'),
+                zoomOutButton = $(thisMap).find('.zoom-out'),
+                centerMapButton = $(thisMap).find('.center-map'),
+                detailsTitle = $(thisMap).find('.hero-unit-body .title').text(),
+                detailsDate = $(thisMap).find('.hero-unit-body .date').text(),
+                detailsTime = $(thisMap).find('.hero-unit-body .time').text(),
+                detailsLocation = $(thisMap).find('.hero-unit-body .location').text(),
+                detailsAddress = $(thisMap).find('.hero-unit-body .address').text(),
+                detailsCity = $(thisMap).find('.hero-unit-body .city').text(),
+                detailsState = $(thisMap).find('.hero-unit-body .state').text(),
+                detailsZip = $(thisMap).find('.hero-unit-body .zip').text(),
+                detailsDescription = $(thisMap).find('.hero-unit-body .description').text(),
+                infoContent = '<div class="map-info"><h1 class="title">' + detailsTitle + '</h1><p class="info"><small class="date">' + detailsDate + '</small><small class="time">' + detailsTime + '</small><span class="divider"></span><span class="location">' + detailsLocation + '</span><span class="address">' + detailsAddress + '</span><span class="city">' + detailsCity + '</span><span class="state">' + detailsState + '</span><span class="zip">' + detailsZip + '</span></p><p class="description">' + detailsDescription + '</p></div>';
+
+            // mozfullscreenerror event handler
+            function errorHandler() {
+                alert('mozfullscreenerror');
+            }
+            document.documentElement.addEventListener('mozfullscreenerror', errorHandler, false);
+
+            // toggle full screen
+            function toggleFullScreen() {
+                if (!document.fullscreenElement &&    // alternative standard method
+                    !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
+                    if (document.documentElement.requestFullscreen) {
+                        document.documentElement.requestFullscreen();
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                        document.documentElement.mozRequestFullScreen();
+                    } else if (document.documentElement.webkitRequestFullscreen) {
+                        document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                    }
+                } else {
+                    if (document.cancelFullScreen) {
+                        document.cancelFullScreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.webkitCancelFullScreen) {
+                        document.webkitCancelFullScreen();
+                    }
+                }
+            }
 
             function initMap() {
 
@@ -39,11 +86,11 @@ var googleMap = function() {
                     rotateControlOptions: {
                         position: google.maps.ControlPosition.RIGHT_TOP
                     },
-                    fullscreenControl: true,
+                    fullscreenControl: false,
                     fullscreenControlOptions: {
                         position: google.maps.ControlPosition.RIGHT_TOP
                     },
-                    zoomControl: true,
+                    zoomControl: false,
                     zoomControlOptions: {
                         position: google.maps.ControlPosition.RIGHT_TOP
                     },
@@ -262,7 +309,7 @@ var googleMap = function() {
                             "elementType": "geometry",
                             "stylers": [
                                 {
-                                    "color": "#1e1e1e"
+                                    "color": "#a32406"
                                 },
                                 {
                                     "lightness": 18
@@ -356,10 +403,10 @@ var googleMap = function() {
                             "elementType": "geometry",
                             "stylers": [
                                 {
-                                    "color": "#a32406"
+                                    "color": "#1e1e1e"
                                 },
                                 {
-                                    "lightness": 30
+                                    "lightness": 20
                                 }
                             ]
                         },
@@ -396,6 +443,11 @@ var googleMap = function() {
                     ]
                 });
 
+                //CREATE MAP INFO WINDOW
+                var infowindow = new google.maps.InfoWindow({
+                    content: infoContent
+                });
+
                 //GEOCODE ADDRESS, SET CUSTOM MARKER CENTER AND PAN MAP
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({
@@ -403,14 +455,15 @@ var googleMap = function() {
                 },
                 function(results, status) {
                     if(status == google.maps.GeocoderStatus.OK) {
-                        var marker = new google.maps.Marker({
-                            position: results[0].geometry.location,
-                            map: map,
-                            icon:'img/map-marker.png'
-                        });
+                        // var marker = new google.maps.Marker({
+                        //     position: results[0].geometry.location,
+                        //     map: map,
+                        //     icon:'img/map-marker.png'
+                        // });
                         var address = results[0].geometry.location;
                         map.setCenter(address);
                         map.setZoom(16);
+                        createMarker(address);
                         initDirections(address);
                         initStreetView(address);
                         panMap(address);
@@ -420,13 +473,26 @@ var googleMap = function() {
                     }
                 });
 
-                //CUSTOM MARKER
-                // var marker = new google.maps.Marker({
-                //     position: mapCoordinates,
-                //     map: map,
-                //     icon:'img/map-marker.png',
-                //     title: 'Natural Rose'
-                // });
+                //CREATE CUSTOM MARKER
+                function createMarker(address) {
+                    var marker = new google.maps.Marker({
+                        position: address,
+                        map: map,
+                        icon:'img/map-marker.png',
+                        title: detailsLocation
+                    });
+                    markers.push(marker);
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
+                }
+
+                function clearMarkers() {
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap(null);
+                    }
+                    markers.length = 0;
+                }
 
                 //PAN MAP TO RIGHT
                 // map.panBy(-250, 100);
@@ -437,6 +503,13 @@ var googleMap = function() {
                     if ($(window).width() >= 768) {
                         map.panBy(-250, 100);
                     }
+                    //Pan map on window resize
+                    $(window).resize(function() {
+                        map.panTo(address);
+                        if ($(window).width() >= 768) {
+                            map.panBy(-250, 100);
+                        }
+                    });
                 }
 
                 //CENTER MAP
@@ -445,6 +518,43 @@ var googleMap = function() {
                         panMap(address);
                     });
                 }
+
+                //ZOOM IN CONTROLS
+                zoomInButton.on('click', function() {
+                    map.setZoom(map.getZoom()+1);
+                });
+
+                //ZOOM OUT CONTROLS
+                zoomOutButton.on('click', function() {
+                    map.setZoom(map.getZoom()-1);
+                });
+
+                //FULL SCREEN
+                fullScreenButton.on('click', function() {
+                    $(thisMap).toggleClass('full-screen-active');
+                    google.maps.event.trigger(map,'resize');
+                    toggleFullScreen();
+                });
+
+                //EXIT FULL SCREEN WHEN FULL SCREEN EXITED
+                var screen_change_events = "webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange";
+                $(document).on(screen_change_events, function () {
+                    var state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+                    if (state === false ) {
+                        if($(thisMap).hasClass('full-screen-active')) {
+                            $(thisMap).removeClass('full-screen-active');
+                        }
+                    }
+                });
+
+                //EXIT FULL SCREEN WHEN ESCAPE KEY PRESSED
+                $(document).keyup(function(e) {
+                    if (e.keyCode == 27) { // escape key maps to keycode `27`
+                        if($(thisMap).hasClass('full-screen-active')) {
+                            $(thisMap).removeClass('full-screen-active');
+                        }
+                    }
+                });
 
                 //INITIALIZE DIRECTIONS
                 var directionsService = new google.maps.DirectionsService(),
@@ -463,35 +573,37 @@ var googleMap = function() {
                 function initDirections(address) {
                     //CALCULATE ROUTE
                     function calcRoute() {
-                        var startLocation = $('#startLocation').val();
-                        var start = startLocation;
+                        var start = $('#startLocation').val();
                         var end = address;
                         var request = {
                             origin:start,
                             destination:end,
                             travelMode: 'DRIVING'
                         };
+
                         // Start/Finish icons
-                        var icons = {
-                            start: new google.maps.MarkerImage(
-                                // URL
-                                'img/map-marker.png'
-                            ),
-                            end: new google.maps.MarkerImage(
-                                // URL
-                                'img/map-marker.png'
-                            )
-                        };
+                        // var icons = {
+                        //     start: new google.maps.MarkerImage(
+                        //         // URL
+                        //         'img/map-marker.png'
+                        //     ),
+                        //     end: new google.maps.MarkerImage(
+                        //         // URL
+                        //         'img/map-marker.png'
+                        //     )
+                        // };
                         directionsService.route(request, function(response, status) {
                             if (status == 'OK') {
                                 var route = response.routes[0].legs[0];
 
-                                //TODO: Remove markers when directions returned
                                 // Removes the markers
-                                // setMapOnAll(null);
+                                clearMarkers();
 
                                 // Creates the origin marker
                                 createStartMarker(route.start_location);
+
+                                //Create start info window
+                                createStartInfo(start);
 
                                 // Creates the destination marker
                                 createEndMarker(route.end_location);
@@ -501,25 +613,51 @@ var googleMap = function() {
 
                                 // Add class
                                 $(thisMap).addClass('directions-active');
+
+                                //Scroll to directions
+                                scrollToDirections();
                             } else {
                                 window.alert('Directions request failed due to ' + status);
                             }
                         });
                     }
 
-                    //CUSTOM DIRECTIONS MARKERS
+                    //CREATE CUSTOM ORIGIN MARKER
                     function createStartMarker(position) {
                         var marker = new google.maps.Marker({
                             position: position,
                             map: map,
-                            icon: 'img/start-marker.png'
+                            icon: 'img/start-marker.png',
+                            title: 'Origin' //TODO: UPDATE TITLE
+                            // title: detailsLocation
+                        });
+                        markers.push(marker);
+                    }
+
+                    //CREATE START INFO WINDOW
+                    function createStartInfo(start) {
+                        //Origin info window
+                        var startInfoContent = '<p class="origin-address">' + start + '</p>';
+                        var startInfoWindow = new google.maps.InfoWindow({
+                            content: startInfoContent
+                        });
+                        markers[0].addListener('click', function() {
+                            startInfoWindow.open(map, markers[0]);
                         });
                     }
+
+                    //CREATE CUSTOM DESTINATION MARKER
                     function createEndMarker(position) {
                         var marker = new google.maps.Marker({
                             position: position,
                             map: map,
-                            icon: 'img/end-marker.png'
+                            icon: 'img/end-marker.png',
+                            title: 'Destination' //TODO: UPDATE TITLE
+                            // title: position
+                        });
+                        markers.push(marker);
+                        marker.addListener('click', function() {
+                            infowindow.open(map, marker);
                         });
                     }
 
@@ -608,12 +746,81 @@ var googleMap = function() {
                 $(thisMap).toggleClass('street-view-active');
             });
 
+            //SCROLL TO DIRECTIONS
+            function scrollToDirections() {
+                $('html, body').animate({
+                    scrollTop: directionsWrapper.offset().top
+                }, 500);
+            }
+
             //TOGGLE DIRECTIONS FORM
             directionsToggle.on('click', function() {
-                $(thisMap).toggleClass('direction-form-active');
+                if($(thisMap).hasClass('directions-active')) {
+                    if($(thisMap).hasClass('direction-form-active')) {
+                        $(thisMap).removeClass('direction-form-active');
+                    } else {
+                        $(thisMap).addClass('direction-form-active');
+                    }
+                } else {
+                    if($(thisMap).hasClass('direction-form-active')) {
+                        $(thisMap).removeClass('direction-form-active');
+                    } else {
+                        $(thisMap).addClass('direction-form-active');
+                        scrollToDirections();
+                    }
+                    //focus on start location input
+                    startInput.focus();
+                }
             });
             directionsClose.on('click', function() {
                 $(thisMap).toggleClass('direction-form-active');
+            });
+
+            //PRINT DIRECTIONS
+
+            //Print Element Function
+            function PrintElem(elem) {
+                var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+                mywindow.document.write('<html><head><title>' + document.title  + '</title><style type="text/css">' +
+                    // '@import "fonts/fontello/css/natural-rose.css", "fonts/fontello/css/animation.css", "fonts/fontello/css/natural-rose-ie7.css";' +
+                    '@import url("https://fonts.googleapis.com/css?family=Varela+Round");' +
+                    // '@font-face { font-family: "chunkfiveroman"; src: url("fonts/chunk-five-roman/chunkfive-webfont.eot"); src: url("fonts/chunk-five-roman/chunkfive-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/chunk-five-roman/chunkfive-webfont.woff2") format("woff2"), url("fonts/chunk-five-roman/chunkfive-webfont.woff") format("woff"), url("fonts/chunk-five-roman/chunkfive-webfont.ttf") format("truetype"), url("fonts/chunk-five-roman/chunkfive-webfont.svg#chunkfiveroman") format("svg"); font-weight: normal; font-style: normal; }' +
+                    'body{font-family: "Varela Round";}' +
+                    // 'h1,h2,h3,h4,h5,h6 { font-family: "chunkfiveroman", Arial; color: #000; display: block; visibility: visible; opacity: 1;}' +
+                    'h1,h2,h3,h4,h5,h6 { font-family: "Bookman Old Style", Arial; color: #000; display: block; visibility: visible; opacity: 1;}' +
+                    '</style>');
+                mywindow.document.write('</head><body >');
+                mywindow.document.write('<h1>' + document.title  + '</h1>');
+                mywindow.document.write(document.getElementById(elem).innerHTML);
+                mywindow.document.write('</body></html>');
+
+                mywindow.document.close(); // necessary for IE >= 10
+                mywindow.focus(); // necessary for IE >= 10*/
+
+                mywindow.print();
+                mywindow.close();
+
+                return true;
+            }
+
+            //Print directions on button click //TODO: STYLE PRINT DIRECTIONS
+            printDirectionsButton.on('click', function() {
+                //Get logo and directions
+                var siteLogo = $('.site-brand .logo').html(),
+                    mapDirections = $(thisMap).find('.directions-display').html();
+
+                //Remove existing print elements
+                var mapPrintDirections = $('#printDirections');
+                if( mapPrintDirections.length ) {
+                    mapPrintDirections.remove();
+                }
+
+                //Create and hide print element
+                directionsWrapper.after('<div id="printDirections"><div class="print-header">' + siteLogo + '</div> ' + infoContent + '<div class="directions-wrapper">' + mapDirections + '</div></div>');
+                $(thisMap).find('#printDirections').css('display', 'none');
+
+                PrintElem('printDirections');
             });
 
         });

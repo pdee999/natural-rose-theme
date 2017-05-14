@@ -9,7 +9,9 @@ module.exports = {
         path: './bundle/',
         //filename: "bundle.js",
         filename: '[name].entry.chunk.js',
-        publicPath: 'C:/Users/patrick.rittenhouse/Documents/Projects/Natural%20Rose/Theme/bundle/'
+        // publicPath: 'C:/Users/patrick.rittenhouse/Documents/Projects/Natural%20Rose/Theme/bundle/'
+        // publicPath: 'https://natural-rose.000webhostapp.com/bundle/'
+        publicPath: './'
     },
     module: {
         preLoaders: [

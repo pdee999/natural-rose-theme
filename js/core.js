@@ -62,7 +62,6 @@ var $naturalrose = {
 	similarSlider: require('./parts/product-slider-similar.part')
 };
 
-
 //Begin No Conflict
 (function($){
 	//Begin Document Ready
