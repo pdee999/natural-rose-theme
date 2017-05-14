@@ -1,6 +1,8 @@
 .site-alert {
   background-color: $global-color-gray-4;
   color: #fff;
+  clear: both;
+  position: relative;
   .alert-container {
     @include container;
   }
@@ -11,7 +13,10 @@
     @include gridle_grid(12);
     padding-top: $slug-height/3;
     padding-bottom: $slug-height/3;
-    > .content {}
+    > .content {
+      padding-right: $gutter-width*1.75;
+      position: relative;
+    }
   }
   .icon {
     @include remove;
@@ -66,5 +71,35 @@
       @include icon-error;
     }
     .message {}
+  }
+  &.stuck {
+    .close {
+      @include remove;
+    }
+  }
+  .close {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    &:hover {
+      .icon {
+        &:after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .icon {
+      @include icon-cancel;
+      display: inline-block;
+      visibility: visible;
+      &:after {
+        transform: rotate(0deg);
+        transition-property: transform;
+        transition-duration: .3s;
+        transition-timing-function: linear;
+      }
+    }
   }
 }

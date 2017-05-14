@@ -7,7 +7,7 @@
 	outline: #fff 1px solid;
 }
 * { // Universal transitions
-	transition-property: box-shadow, text-shadow, position, display, color, background-color, border-color, min-height, max-height, opacity;
+	transition-property: box-shadow, text-shadow, position, display, color, background-color, border-color, min-height, max-height, opacity, transform;
     transition-duration: .3s;
 	transition-timing-function: ease-in-out;
 }

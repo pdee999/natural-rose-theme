@@ -237,14 +237,17 @@ module.exports = function(grunt) {
                     'parallax.js/parallax.min.js': 'parallax.js/parallax.min.js'
                 }
             },
-            jspdf: {
+            handlebars: {
                 options: {
                     runBower: true,
                     report: true,
                     clean: true,
                     destPrefix: 'libs/'
                 },
-                src: 'jspdf/dist/'
+                files: {
+                    'handlebars/handlebars.js': 'handlebars/handlebars.js',
+                    'handlebars/handlebars.min.js': 'handlebars/handlebars.min.js'
+                }
             },
             /* jqueryui: {
                 options: {

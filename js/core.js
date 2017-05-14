@@ -36,6 +36,10 @@ var $naturalrose = {
 			});
 		}
 	},
+	createAlert: require('./parts/site-alert-create.part.js'),
+	closeAlert: require('./parts/site-alert-close.part.js'),
+	stickAlert: require('./parts/site-alert-stuck.part.js'),
+	siteAlerts: require('./parts/alerts.part.js'),
 	siteHeader: $('.site-header'),
 	stickyHeader: require('./parts/sticky-header.part'),
 	stickyFooter: $('#site-footer.sticky-footer'),
@@ -52,6 +56,9 @@ var $naturalrose = {
 	heroSlider: $('.hero-unit.slider'),
 	heroCarousel: require('./parts/hero-unit.part'),
 	heroMap: require('./parts/hero-unit-map.part'),
+	reinitParallx: function() {
+		$(window).trigger('resize.px.parallax');
+	},
 	featureCarousel: $('.hero-unit .hero-feature.slick'),
 	heroFeatureCarousel: require('./parts/hero-unit-feature.part'),
 	quoteSlider: $('.testimonial-slider'),
@@ -66,6 +73,15 @@ var $naturalrose = {
 (function($){
 	//Begin Document Ready
 	$(document).ready(function() {
+
+		//Stick Alerts (for alerts on document ready)
+		$naturalrose.stickAlert();
+
+		//Close Alerts (for alerts on document ready)
+		$naturalrose.closeAlert();
+
+		//Create Site Alerts
+		$naturalrose.siteAlerts();
 
 		//Sticky Header
 		$naturalrose.stickyHeader();

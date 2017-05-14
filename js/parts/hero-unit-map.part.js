@@ -1,8 +1,7 @@
 var googleMap = function() {
 
-    console.log($(this));
-
-    var map = $('.hero-unit.map');
+    var $naturalrose = this,
+        map = $('.hero-unit.map');
     if (map.length) {
         $.each(map, function() {
             var thisMap = this,
@@ -617,7 +616,8 @@ var googleMap = function() {
                                 //Scroll to directions
                                 scrollToDirections();
                             } else {
-                                window.alert('Directions request failed due to ' + status);
+                                // window.alert('Directions request failed due to ' + status);
+                                $naturalrose.createAlert('#mapErrors', 'after', 'error', 'Directions request failed due to ' + status);
                             }
                         });
                     }
