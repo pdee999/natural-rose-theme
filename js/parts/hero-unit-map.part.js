@@ -788,7 +788,8 @@ var googleMap = function() {
                     // '@font-face { font-family: "chunkfiveroman"; src: url("fonts/chunk-five-roman/chunkfive-webfont.eot"); src: url("fonts/chunk-five-roman/chunkfive-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/chunk-five-roman/chunkfive-webfont.woff2") format("woff2"), url("fonts/chunk-five-roman/chunkfive-webfont.woff") format("woff"), url("fonts/chunk-five-roman/chunkfive-webfont.ttf") format("truetype"), url("fonts/chunk-five-roman/chunkfive-webfont.svg#chunkfiveroman") format("svg"); font-weight: normal; font-style: normal; }' +
                     'body{font-family: "Varela Round";}' +
                     // 'h1,h2,h3,h4,h5,h6 { font-family: "chunkfiveroman", Arial; color: #000; display: block; visibility: visible; opacity: 1;}' +
-                    'h1,h2,h3,h4,h5,h6 { font-family: "Bookman Old Style", Arial; color: #000; display: block; visibility: visible; opacity: 1;}' +
+                    'h1,h2,h3,h4,h5,h6 { font-family: "Bookman Old Style", Impact, Charcoal, serif; color: #000; display: block; visibility: visible; opacity: 1;}' +
+                    '.divider {display: block;} .time, .city {margin-left: 10px;} .state,.zip {margin-left: 5px;} .location{display: block;} .adp-summary{margin-bottom: 10px; margin-left: 30px;}' +
                     '</style>');
                 mywindow.document.write('</head><body >');
                 mywindow.document.write('<h1>' + document.title  + '</h1>');

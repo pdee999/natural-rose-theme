@@ -868,7 +868,7 @@
         .icon {}
         .label {
           &.show {
-            @include gridle_state(tablet-portrait tablet-landscape desktop site-width) {
+            @include gridle_state(desktop site-width) {
               display: inline;
               visibility: visible;
             }
